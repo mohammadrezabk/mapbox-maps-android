@@ -258,7 +258,7 @@ commands:
 jobs:
   verify-code:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -274,7 +274,7 @@ jobs:
 
   verify-docs:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -286,7 +286,7 @@ jobs:
 
   run-unit-test:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -295,7 +295,7 @@ jobs:
 
   run-lint:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -306,7 +306,7 @@ jobs:
 
   run-robo-test:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -319,7 +319,7 @@ jobs:
 
   run-app-test:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -339,7 +339,7 @@ jobs:
 
   run-sdk-test:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -357,7 +357,7 @@ jobs:
 
   run-style-test:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -377,7 +377,7 @@ jobs:
 
   build-sdk-from-source:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout
@@ -388,7 +388,7 @@ jobs:
 
   build-sdk-release:
     docker:
-      - image: mbgl/android-ndk-r21b:latest
+      - image: mbgl/android-ndk-r22:30070628f3
 
     steps:
       - checkout

@@ -60,7 +60,7 @@ class AttributionViewImplTest {
   @Test
   fun setOnClickListener() {
     assertFalse(attributionView.hasOnClickListeners())
-    attributionView.setOnClickListener(mockk())
+    attributionView.setOnViewClickListener(mockk())
     assertTrue(attributionView.hasOnClickListeners())
   }
 }

@@ -42,5 +42,5 @@ interface AttributionView {
   /**
    * Set an [View.OnClickListener] to AttributionView
    */
-  fun setOnClickListener(listener: View.OnClickListener)
+  fun setOnViewClickListener(listener: View.OnClickListener)
 }

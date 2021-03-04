@@ -47,7 +47,7 @@ class AttributionViewPluginImplTest {
     attributionPlugin.bind(mapView, attrs, 1f)
     attributionPlugin.onPluginView(attributionView)
     verify {
-      attributionView.setOnClickListener(capture(clickSot))
+      attributionView.setOnViewClickListener(capture(clickSot))
     }
     attributionPlugin.initialize()
   }
