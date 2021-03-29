@@ -26,6 +26,7 @@ abstract class Source(
   /**
    * Get the type of the current source as a String.
    */
+  @SuppressWarnings("HiddenAbstractMethod")
   internal abstract fun getType(): String
 
   /**

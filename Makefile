@@ -1,6 +1,6 @@
 .PHONY: check
 check:
-	./gradlew ktlint lint;
+	./gradlew ktlint lint checkApi;
 	python scripts/license-validate.py;
 	sh scripts/kdoc-validate.sh;
 
@@ -75,3 +75,18 @@ instrumentation-clean:
 .PHONY: generate-sanity-test
 generate-sanity-test:
 	node scripts/sanity-test/generate-sanity-test.js
+
+# Metalava: check API
+.PHONY: check-api
+check-api:
+	./gradlew checkApi
+
+# Metalava: update API
+.PHONY: update-api
+update-api:
+	./gradlew updateApi
+
+# Metalava: update metalava version
+.PHONY: update-metalava
+update-metalava:
+	sh ./metalava/update.sh

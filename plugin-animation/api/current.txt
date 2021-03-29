@@ -1,0 +1,69 @@
+// Signature format: 3.0
+package com.mapbox.maps.plugin.animation {
+
+  public final class CameraAnimationsPluginImplKt {
+    method public static Object? easeTo(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, com.mapbox.maps.CameraOptions cameraOptions, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public static Object? flyTo(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, com.mapbox.maps.CameraOptions cameraOptions, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public static com.mapbox.maps.plugin.animation.CameraAnimationsPlugin getCameraAnimationsPlugin(com.mapbox.maps.plugin.delegates.MapPluginProviderDelegate);
+    method public static Object? moveBy(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, com.mapbox.maps.ScreenCoordinate screenCoordinate, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public static Object? pitchBy(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, double pitch, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public static Object? rotateBy(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, com.mapbox.maps.ScreenCoordinate first, com.mapbox.maps.ScreenCoordinate second, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public static Object? scaleBy(com.mapbox.maps.plugin.delegates.MapPluginExtensionsDelegate, double amount, com.mapbox.maps.ScreenCoordinate? screenCoordinate, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+  }
+
+  public final class CameraAnimatorsFactory {
+    method public static void setDefaultAnimatorOptions(com.mapbox.maps.plugin.animation.CameraAnimatorType type, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> block);
+    method public static void setDefaultAnimatorOptions(kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> block);
+    field public static final android.view.animation.Interpolator CUBIC_BEZIER_INTERPOLATOR;
+    field public static final com.mapbox.maps.plugin.animation.CameraAnimatorsFactory.Companion Companion;
+    field public static final long DEFAULT_ANIMATION_DURATION_MS = 300L; // 0x12cL
+  }
+
+  public static final class CameraAnimatorsFactory.Companion {
+    method public void setDefaultAnimatorOptions(com.mapbox.maps.plugin.animation.CameraAnimatorType type, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> block);
+    method public void setDefaultAnimatorOptions(kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> block);
+  }
+
+}
+
+package com.mapbox.maps.plugin.animation.animator {
+
+  public abstract class CameraAnimator<T> extends android.animation.ValueAnimator {
+    ctor public CameraAnimator(android.animation.TypeEvaluator<T> evaluator, com.mapbox.maps.plugin.animation.CameraAnimatorOptions<? extends T> cameraAnimatorOptions);
+    method public final void addListener(android.animation.Animator.AnimatorListener? listener);
+    method public final void addUpdateListener(android.animation.ValueAnimator.AnimatorUpdateListener? listener);
+    method public final String? getOwner();
+    method public final T? getStartValue();
+    method public final T![] getTargets();
+    method public abstract com.mapbox.maps.plugin.animation.CameraAnimatorType getType();
+    method public final void removeAllListeners();
+    method public final void removeAllUpdateListeners();
+    method public final void removeListener(android.animation.Animator.AnimatorListener? listener);
+    method public final void removeUpdateListener(android.animation.ValueAnimator.AnimatorUpdateListener? listener);
+    method public final void setEvaluator(android.animation.TypeEvaluator<?>? value);
+    method public final void setObjectValues(java.lang.Object?... values);
+    method public final void start();
+    property public final String? owner;
+    property public final T? startValue;
+    property public final T![] targets;
+    property public abstract com.mapbox.maps.plugin.animation.CameraAnimatorType type;
+    field public static final com.mapbox.maps.plugin.animation.animator.CameraAnimator.Companion Companion;
+  }
+
+  public static final class CameraAnimator.Companion {
+  }
+
+  public final class Evaluators {
+    method public android.animation.TypeEvaluator<java.lang.Double> getDOUBLE();
+    method public android.animation.TypeEvaluator<com.mapbox.maps.EdgeInsets> getEDGE_INSET();
+    method public android.animation.TypeEvaluator<com.mapbox.geojson.Point> getPOINT();
+    method public android.animation.TypeEvaluator<com.mapbox.maps.ScreenCoordinate> getSCREEN_COORDINATE();
+    property public final android.animation.TypeEvaluator<java.lang.Double> DOUBLE;
+    property public final android.animation.TypeEvaluator<com.mapbox.maps.EdgeInsets> EDGE_INSET;
+    property public final android.animation.TypeEvaluator<com.mapbox.geojson.Point> POINT;
+    property public final android.animation.TypeEvaluator<com.mapbox.maps.ScreenCoordinate> SCREEN_COORDINATE;
+    field public static final com.mapbox.maps.plugin.animation.animator.Evaluators INSTANCE;
+  }
+
+}
+

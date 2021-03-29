@@ -1,0 +1,1799 @@
+// Signature format: 3.0
+package com.mapbox.maps {
+
+  public final class ExtensionUtilsKt {
+    method public static android.graphics.Bitmap bitmap(com.mapbox.maps.MapSnapshotInterface);
+    method public static boolean equalsWithDelta(double, double other, double delta);
+    method public static boolean roughlyEquals(double, double other);
+    method public static String toJson(com.mapbox.bindgen.Value);
+  }
+
+}
+
+package com.mapbox.maps.dsl {
+
+  public final class CameraOptionsKtxKt {
+    method public static inline com.mapbox.maps.CameraOptions! cameraOptions(kotlin.jvm.functions.Function1<? super com.mapbox.maps.CameraOptions.Builder,kotlin.Unit> block);
+  }
+
+}
+
+package com.mapbox.maps.extension.style {
+
+  public interface StyleContract {
+  }
+
+  public static interface StyleContract.StyleExtension {
+    method public java.util.List<com.mapbox.maps.extension.style.StyleContract.StyleImageExtension> getImages();
+    method public java.util.List<kotlin.Pair<com.mapbox.maps.extension.style.StyleContract.StyleLayerExtension,com.mapbox.maps.LayerPosition>> getLayers();
+    method public com.mapbox.maps.extension.style.StyleContract.StyleLightExtension? getLight();
+    method public java.util.List<com.mapbox.maps.extension.style.StyleContract.StyleSourceExtension> getSources();
+    method public String getStyleUri();
+    method public com.mapbox.maps.extension.style.StyleContract.StyleTerrainExtension? getTerrain();
+    property public abstract java.util.List<com.mapbox.maps.extension.style.StyleContract.StyleImageExtension> images;
+    property public abstract java.util.List<kotlin.Pair<com.mapbox.maps.extension.style.StyleContract.StyleLayerExtension,com.mapbox.maps.LayerPosition>> layers;
+    property public abstract com.mapbox.maps.extension.style.StyleContract.StyleLightExtension? light;
+    property public abstract java.util.List<com.mapbox.maps.extension.style.StyleContract.StyleSourceExtension> sources;
+    property public abstract String styleUri;
+    property public abstract com.mapbox.maps.extension.style.StyleContract.StyleTerrainExtension? terrain;
+  }
+
+  public static fun interface StyleContract.StyleImageExtension {
+    method public void bindTo(com.mapbox.maps.StyleManagerInterface delegate);
+  }
+
+  public static interface StyleContract.StyleLayerExtension {
+    method public void bindTo(com.mapbox.maps.StyleManagerInterface delegate, com.mapbox.maps.LayerPosition? position = null);
+  }
+
+  public static fun interface StyleContract.StyleLightExtension {
+    method public void bindTo(com.mapbox.maps.StyleManagerInterface delegate);
+  }
+
+  public static fun interface StyleContract.StyleSourceExtension {
+    method public void bindTo(com.mapbox.maps.StyleManagerInterface delegate);
+  }
+
+  public static fun interface StyleContract.StyleTerrainExtension {
+    method public void bindTo(com.mapbox.maps.StyleManagerInterface delegate);
+  }
+
+  public final class StyleContractKt {
+    method public static com.mapbox.bindgen.Expected<java.lang.Void,java.lang.String> addStyleImage(com.mapbox.maps.StyleManagerInterface, String imageId, android.graphics.Bitmap bitmap);
+  }
+
+}
+
+package com.mapbox.maps.module {
+
+  public interface MapTelemetry {
+    method public void disableTelemetrySession();
+    method public void onAppUserTurnstileEvent();
+    method public void onPerformanceEvent(android.os.Bundle? data);
+    method public void setDebugLoggingEnabled(boolean debugLoggingEnabled);
+    method public boolean setSessionIdRotationInterval(int interval);
+    method public void setUserTelemetryRequestState(boolean enabled);
+  }
+
+}
+
+package com.mapbox.maps.plugin {
+
+  public fun interface ContextBinder {
+    method public void bind(android.content.Context context, android.util.AttributeSet? attrs, float pixelRatio);
+  }
+
+  public final class InvalidPluginConfigurationException extends java.lang.Exception {
+    ctor public InvalidPluginConfigurationException(String exceptionMessage);
+  }
+
+  public interface LifecyclePlugin {
+    method public default void onStart();
+    method public default void onStop();
+  }
+
+  public abstract sealed class LocationPuck {
+  }
+
+  public final class LocationPuck2D extends com.mapbox.maps.plugin.LocationPuck {
+    ctor public LocationPuck2D(android.graphics.drawable.Drawable? topImage = null, android.graphics.drawable.Drawable? bearingImage = null, android.graphics.drawable.Drawable? shadowImage = null, String? scaleExpression = null);
+    method public android.graphics.drawable.Drawable? component1();
+    method public android.graphics.drawable.Drawable? component2();
+    method public android.graphics.drawable.Drawable? component3();
+    method public String? component4();
+    method public com.mapbox.maps.plugin.LocationPuck2D copy(android.graphics.drawable.Drawable? topImage, android.graphics.drawable.Drawable? bearingImage, android.graphics.drawable.Drawable? shadowImage, String? scaleExpression);
+    method public android.graphics.drawable.Drawable? getBearingImage();
+    method public String? getScaleExpression();
+    method public android.graphics.drawable.Drawable? getShadowImage();
+    method public android.graphics.drawable.Drawable? getTopImage();
+    method public void setBearingImage(android.graphics.drawable.Drawable? p);
+    method public void setScaleExpression(String? p);
+    method public void setShadowImage(android.graphics.drawable.Drawable? p);
+    method public void setTopImage(android.graphics.drawable.Drawable? p);
+    property public final android.graphics.drawable.Drawable? bearingImage;
+    property public final String? scaleExpression;
+    property public final android.graphics.drawable.Drawable? shadowImage;
+    property public final android.graphics.drawable.Drawable? topImage;
+  }
+
+  public final class LocationPuck3D extends com.mapbox.maps.plugin.LocationPuck {
+    ctor public LocationPuck3D(String modelUri, java.util.List<java.lang.Float> position = listOf(0.0, 0.0), float modelOpacity = 1f, java.util.List<java.lang.Float> modelScale = listOf(1.0, 1.0, 1.0), String? modelScaleExpression = null, java.util.List<java.lang.Float> modelRotation = listOf(0.0, 0.0, 90.0));
+    method public String component1();
+    method public java.util.List<java.lang.Float> component2();
+    method public float component3();
+    method public java.util.List<java.lang.Float> component4();
+    method public String? component5();
+    method public java.util.List<java.lang.Float> component6();
+    method public com.mapbox.maps.plugin.LocationPuck3D copy(String modelUri, java.util.List<java.lang.Float> position, float modelOpacity, java.util.List<java.lang.Float> modelScale, String? modelScaleExpression, java.util.List<java.lang.Float> modelRotation);
+    method public float getModelOpacity();
+    method public java.util.List<java.lang.Float> getModelRotation();
+    method public java.util.List<java.lang.Float> getModelScale();
+    method public String? getModelScaleExpression();
+    method public String getModelUri();
+    method public java.util.List<java.lang.Float> getPosition();
+    method public void setModelOpacity(float p);
+    method public void setModelRotation(java.util.List<java.lang.Float> p);
+    method public void setModelScale(java.util.List<java.lang.Float> p);
+    method public void setModelScaleExpression(String? p);
+    method public void setModelUri(String p);
+    method public void setPosition(java.util.List<java.lang.Float> p);
+    property public final float modelOpacity;
+    property public final java.util.List<java.lang.Float> modelRotation;
+    property public final java.util.List<java.lang.Float> modelScale;
+    property public final String? modelScaleExpression;
+    property public final String modelUri;
+    property public final java.util.List<java.lang.Float> position;
+  }
+
+  public fun interface MapCameraPlugin extends com.mapbox.maps.plugin.MapPlugin {
+    method public void onCameraMove(double lat, double lon, double zoom, double pitch, double bearing, Double![]? padding, kotlin.Pair<java.lang.Double,java.lang.Double>? anchor);
+  }
+
+  public interface MapPlugin {
+    method public default void cleanup();
+    method public default void initialize();
+    method public default void onDelegateProvider(com.mapbox.maps.plugin.delegates.MapDelegateProvider delegateProvider);
+  }
+
+  public interface MapSizePlugin {
+    method public default void onSizeChanged(int width, int height);
+  }
+
+  public interface MapStyleObserverPlugin {
+    method public void onStyleChanged(com.mapbox.maps.StyleManagerInterface styleDelegate);
+  }
+
+  public final class PluginKt {
+    field public static final String PLUGIN_ANNOTATION_CLASS_NAME = "com.mapbox.maps.plugin.annotation.AnnotationPluginImpl";
+    field public static final String PLUGIN_ATTRIBUTION_CLASS_NAME = "com.mapbox.maps.plugin.attribution.AttributionViewPlugin";
+    field public static final String PLUGIN_CAMERA_ANIMATIONS_CLASS_NAME = "com.mapbox.maps.plugin.animation.CameraAnimationsPluginImpl";
+    field public static final String PLUGIN_COMPASS_CLASS_NAME = "com.mapbox.maps.plugin.compass.CompassViewPlugin";
+    field public static final String PLUGIN_GESTURE_CLASS_NAME = "com.mapbox.maps.plugin.gestures.GesturesPluginImpl";
+    field public static final String PLUGIN_LOCATION_CLASS_NAME = "com.mapbox.maps.plugin.location.LocationPluginImpl";
+    field public static final String PLUGIN_LOCATION_COMPONENT_CLASS_NAME = "com.mapbox.maps.plugin.locationcomponent.LocationComponentPluginImpl";
+    field public static final String PLUGIN_LOGO_CLASS_NAME = "com.mapbox.maps.plugin.logo.LogoViewPlugin";
+    field public static final String PLUGIN_MAPOVERLAY_CLASS_NAME = "com.mapbox.maps.plugin.overlay.MapOverlayPluginImpl";
+    field public static final String PLUGIN_SCALE_BAR_CLASS_NAME = "com.mapbox.maps.plugin.scalebar.ScaleBarPluginImpl";
+  }
+
+  public fun interface ViewPlugin extends com.mapbox.maps.plugin.MapPlugin {
+    method public android.view.View bind(android.widget.FrameLayout mapView, android.util.AttributeSet? attrs, float pixelRatio);
+    method public default void onPluginView(android.view.View view);
+  }
+
+  public static final class ViewPlugin.Initializer {
+    ctor public ViewPlugin.Initializer(java.lang.ref.WeakReference<android.content.Context> context, android.content.res.TypedArray attributes, float pixelRatio);
+    method public java.lang.ref.WeakReference<android.content.Context> component1();
+    method public android.content.res.TypedArray component2();
+    method public float component3();
+    method public com.mapbox.maps.plugin.ViewPlugin.Initializer copy(java.lang.ref.WeakReference<android.content.Context> context, android.content.res.TypedArray attributes, float pixelRatio);
+    method public android.content.res.TypedArray getAttributes();
+    method public java.lang.ref.WeakReference<android.content.Context> getContext();
+    method public float getPixelRatio();
+    property public final android.content.res.TypedArray attributes;
+    property public final java.lang.ref.WeakReference<android.content.Context> context;
+    property public final float pixelRatio;
+  }
+
+}
+
+package com.mapbox.maps.plugin.animation {
+
+  public interface CameraAnimationsLifecycleListener {
+    method public void onAnimatorCancelling(com.mapbox.maps.plugin.animation.CameraAnimatorType type, android.animation.ValueAnimator animator, String? owner);
+    method public void onAnimatorEnding(com.mapbox.maps.plugin.animation.CameraAnimatorType type, android.animation.ValueAnimator animator, String? owner);
+    method public void onAnimatorInterrupting(com.mapbox.maps.plugin.animation.CameraAnimatorType type, android.animation.ValueAnimator runningAnimator, String? runningAnimatorOwner, android.animation.ValueAnimator newAnimator, String? newAnimatorOwner);
+    method public void onAnimatorStarting(com.mapbox.maps.plugin.animation.CameraAnimatorType type, android.animation.ValueAnimator animator, String? owner);
+  }
+
+  public interface CameraAnimationsPlugin extends com.mapbox.maps.plugin.MapPlugin {
+    method public void addCameraAnchorChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorNullableChangeListener<com.mapbox.maps.ScreenCoordinate> listener);
+    method public void addCameraAnimationsLifecycleListener(com.mapbox.maps.plugin.animation.CameraAnimationsLifecycleListener listener);
+    method public void addCameraBearingChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public void addCameraCenterChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<com.mapbox.geojson.Point> listener);
+    method public void addCameraPaddingChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<com.mapbox.maps.EdgeInsets> listener);
+    method public void addCameraPitchChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public void addCameraZoomChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public double calculateScaleBy(double amount, double currentZoom);
+    method public void cancelAllAnimators(java.util.List<java.lang.String> exceptOwnerList = emptyList());
+    method public android.animation.ValueAnimator createAnchorAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<com.mapbox.maps.ScreenCoordinate> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public android.animation.ValueAnimator createBearingAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<java.lang.Double> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public android.animation.ValueAnimator createCenterAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<com.mapbox.geojson.Point> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public android.animation.ValueAnimator createPaddingAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<com.mapbox.maps.EdgeInsets> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public android.animation.ValueAnimator createPitchAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<java.lang.Double> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public android.animation.ValueAnimator createZoomAnimator(com.mapbox.maps.plugin.animation.CameraAnimatorOptions<java.lang.Double> options, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? block = null);
+    method public void easeTo(com.mapbox.maps.CameraOptions cameraOptions, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public void flyTo(com.mapbox.maps.CameraOptions cameraOptions, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public com.mapbox.maps.ScreenCoordinate? getAnchor();
+    method public void moveBy(com.mapbox.maps.ScreenCoordinate screenCoordinate, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public void pitchBy(double pitch, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public void playAnimatorsSequentially(android.animation.ValueAnimator... animators);
+    method public void playAnimatorsTogether(android.animation.ValueAnimator... animators);
+    method public void registerAnimators(android.animation.ValueAnimator... cameraAnimators);
+    method public void removeCameraAnchorChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorNullableChangeListener<com.mapbox.maps.ScreenCoordinate> listener);
+    method public void removeCameraAnimationsLifecycleListener(com.mapbox.maps.plugin.animation.CameraAnimationsLifecycleListener listener);
+    method public void removeCameraBearingChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public void removeCameraCenterChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<com.mapbox.geojson.Point> listener);
+    method public void removeCameraPaddingChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<com.mapbox.maps.EdgeInsets> listener);
+    method public void removeCameraPitchChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public void removeCameraZoomChangeListener(com.mapbox.maps.plugin.animation.CameraAnimatorChangeListener<java.lang.Double> listener);
+    method public void rotateBy(com.mapbox.maps.ScreenCoordinate first, com.mapbox.maps.ScreenCoordinate second, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public void scaleBy(double amount, com.mapbox.maps.ScreenCoordinate? screenCoordinate, com.mapbox.maps.plugin.animation.MapAnimationOptions? animationOptions = null);
+    method public void setAnchor(com.mapbox.maps.ScreenCoordinate? p);
+    method public void unregisterAnimators(android.animation.ValueAnimator![] cameraAnimators, boolean cancelAnimators = true);
+    property public abstract com.mapbox.maps.ScreenCoordinate? anchor;
+  }
+
+  public fun interface CameraAnimatorChangeListener<T> {
+    method public void onChanged(T? updatedValue);
+  }
+
+  public fun interface CameraAnimatorNullableChangeListener<T> {
+    method public void onChanged(T? updatedValue);
+  }
+
+  public final class CameraAnimatorOptions<T> {
+    method public String? getOwner();
+    method public T? getStartValue();
+    method public T![]! getTargets();
+    property public final String? owner;
+    property public final T? startValue;
+    property public final T![]! targets;
+    field public static final com.mapbox.maps.plugin.animation.CameraAnimatorOptions.Companion Companion;
+  }
+
+  public static final class CameraAnimatorOptions.Builder<T> {
+    ctor public CameraAnimatorOptions.Builder(T?... targets);
+    method public com.mapbox.maps.plugin.animation.CameraAnimatorOptions<T> build();
+    method public T![]! getTargets();
+    method public com.mapbox.maps.plugin.animation.CameraAnimatorOptions.Builder<T> owner(String owner);
+    method public com.mapbox.maps.plugin.animation.CameraAnimatorOptions.Builder<T> startValue(T? startValue);
+    property public final T![]! targets;
+  }
+
+  public static final class CameraAnimatorOptions.Companion {
+    method public <T> com.mapbox.maps.plugin.animation.CameraAnimatorOptions<T> cameraAnimatorOptions(T![]? targets, kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.animation.CameraAnimatorOptions.Builder<T>,kotlin.Unit>? block = null);
+  }
+
+  public enum CameraAnimatorType {
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType ANCHOR;
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType BEARING;
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType CENTER;
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType PADDING;
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType PITCH;
+    enum_constant public static final com.mapbox.maps.plugin.animation.CameraAnimatorType ZOOM;
+  }
+
+  public final class MapAnimationOptions {
+    method public android.animation.Animator.AnimatorListener? getAnimatorListener();
+    method public Long? getDuration();
+    method public android.animation.TimeInterpolator? getInterpolator();
+    method public String? getOwner();
+    property public final android.animation.Animator.AnimatorListener? animatorListener;
+    property public final Long? duration;
+    property public final android.animation.TimeInterpolator? interpolator;
+    property public final String? owner;
+    field public static final com.mapbox.maps.plugin.animation.MapAnimationOptions.Companion Companion;
+  }
+
+  public static final class MapAnimationOptions.Builder {
+    ctor public MapAnimationOptions.Builder();
+    method public com.mapbox.maps.plugin.animation.MapAnimationOptions.Builder animatorListener(android.animation.Animator.AnimatorListener animatorListener);
+    method public com.mapbox.maps.plugin.animation.MapAnimationOptions build();
+    method public com.mapbox.maps.plugin.animation.MapAnimationOptions.Builder duration(long duration);
+    method public com.mapbox.maps.plugin.animation.MapAnimationOptions.Builder interpolator(android.animation.TimeInterpolator interpolator);
+    method public com.mapbox.maps.plugin.animation.MapAnimationOptions.Builder owner(String owner);
+  }
+
+  public static final class MapAnimationOptions.Companion {
+    method public inline com.mapbox.maps.plugin.animation.MapAnimationOptions mapAnimationOptions(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.animation.MapAnimationOptions.Builder,kotlin.Unit> block);
+  }
+
+  public final class MapAnimationOwnerRegistry {
+    field public static final String COMPASS = "Maps-Compass";
+    field public static final String GESTURES = "Maps-Gestures";
+    field public static final com.mapbox.maps.plugin.animation.MapAnimationOwnerRegistry INSTANCE;
+    field public static final String INTERNAL = "Maps-CameraInternal";
+    field public static final String LOCATION = "Maps-Location";
+  }
+
+}
+
+package com.mapbox.maps.plugin.annotation {
+
+  public abstract class Annotation<T extends com.mapbox.geojson.Geometry> {
+    ctor public Annotation(long id, com.google.gson.JsonObject jsonObject, T geometry);
+    method public com.google.gson.JsonElement? getData();
+    method public final T getGeometry();
+    method public final long getId();
+    method public final com.google.gson.JsonObject getJsonObject();
+    method public abstract T? getOffsetGeometry(com.mapbox.maps.plugin.delegates.MapProjectionDelegate projectionDelegate, com.mapbox.android.gestures.MoveDistancesObject moveDistancesObject, int touchAreaShiftX, int touchAreaShiftY);
+    method public abstract com.mapbox.maps.plugin.annotation.AnnotationType getType();
+    method public final boolean isDraggable();
+    method public void setData(com.google.gson.JsonElement? jsonElement);
+    method public final void setDraggable(boolean p);
+    method public final void setGeometry(T p);
+    method public abstract void setUsedDataDrivenProperties();
+    property public final T geometry;
+    property public final long id;
+    property public final boolean isDraggable;
+    property public final com.google.gson.JsonObject jsonObject;
+    field public static final com.mapbox.maps.plugin.annotation.Annotation.Companion Companion;
+    field public static final String ID_DATA = "custom_data";
+    field public static final double MAX_MERCATOR_LATITUDE = 85.05112877980659;
+    field public static final double MIN_MERCATOR_LATITUDE = -85.05112877980659;
+  }
+
+  public static final class Annotation.Companion {
+  }
+
+  public final class AnnotationConfig {
+    ctor public AnnotationConfig(String? belowLayerId = null, String? layerId = null, String? sourceId = null, com.mapbox.maps.plugin.annotation.AnnotationSourceOptions? annotationSourceOptions = null);
+    method public String? component1();
+    method public String? component2();
+    method public String? component3();
+    method public com.mapbox.maps.plugin.annotation.AnnotationSourceOptions? component4();
+    method public com.mapbox.maps.plugin.annotation.AnnotationConfig copy(String? belowLayerId, String? layerId, String? sourceId, com.mapbox.maps.plugin.annotation.AnnotationSourceOptions? annotationSourceOptions);
+    method public com.mapbox.maps.plugin.annotation.AnnotationSourceOptions? getAnnotationSourceOptions();
+    method public String? getBelowLayerId();
+    method public String? getLayerId();
+    method public String? getSourceId();
+    property public final com.mapbox.maps.plugin.annotation.AnnotationSourceOptions? annotationSourceOptions;
+    property public final String? belowLayerId;
+    property public final String? layerId;
+    property public final String? sourceId;
+  }
+
+  public interface AnnotationManager<G extends com.mapbox.geojson.Geometry, T extends com.mapbox.maps.plugin.annotation.Annotation<G>, S extends com.mapbox.maps.plugin.annotation.AnnotationOptions<G, T>, D extends com.mapbox.maps.plugin.annotation.OnAnnotationDragListener<? extends T>, U extends com.mapbox.maps.plugin.annotation.OnAnnotationClickListener<T>, V extends com.mapbox.maps.plugin.annotation.OnAnnotationLongClickListener<T>> {
+    method public default boolean addClickListener(U u);
+    method public default boolean addDragListener(D d);
+    method public default boolean addLongClickListener(V v);
+    method public T create(S option);
+    method public java.util.List<T> create(java.util.List<? extends S> options);
+    method public void delete(T annotation);
+    method public void delete(java.util.List<? extends T> annotations);
+    method public void deleteAll();
+    method public void enableDataDrivenProperty(String property);
+    method public java.util.List<T> getAnnotations();
+    method public java.util.List<U> getClickListeners();
+    method public com.mapbox.maps.plugin.delegates.MapDelegateProvider getDelegateProvider();
+    method public java.util.List<D> getDragListeners();
+    method public java.util.List<V> getLongClickListeners();
+    method public void onDestroy();
+    method public void onSizeChanged(int width, int height);
+    method public void onStyleLoaded(com.mapbox.maps.StyleManagerInterface styleDelegate);
+    method public default boolean removeClickListener(U u);
+    method public default boolean removeDragListener(D d);
+    method public default boolean removeLongClickListener(V v);
+    method public void update(T annotation);
+    method public void update(java.util.List<? extends T> annotations);
+    property public abstract java.util.List<T> annotations;
+    property public abstract java.util.List<U> clickListeners;
+    property public abstract com.mapbox.maps.plugin.delegates.MapDelegateProvider delegateProvider;
+    property public abstract java.util.List<D> dragListeners;
+    property public abstract java.util.List<V> longClickListeners;
+  }
+
+  public fun interface AnnotationOptions<G extends com.mapbox.geojson.Geometry, T extends com.mapbox.maps.plugin.annotation.Annotation<G>> {
+    method public T build(long id, com.mapbox.maps.plugin.annotation.AnnotationManager<G,T,?,?,?,?> annotationManager);
+  }
+
+  public interface AnnotationPlugin extends com.mapbox.maps.plugin.MapPlugin com.mapbox.maps.plugin.MapSizePlugin com.mapbox.maps.plugin.MapStyleObserverPlugin {
+    method public com.mapbox.maps.plugin.annotation.AnnotationManager<?,?,?,?,?,?> createAnnotationManager(android.view.View mapView, com.mapbox.maps.plugin.annotation.AnnotationType type, com.mapbox.maps.plugin.annotation.AnnotationConfig? annotationConfig);
+  }
+
+  public final class AnnotationSourceOptions {
+    ctor public AnnotationSourceOptions(Long? maxZoom = null, Long? buffer = null, Boolean? lineMetrics = null, Double? tolerance = null, com.mapbox.maps.plugin.annotation.ClusterOptions? clusterOptions = null);
+    method public Long? component1();
+    method public Long? component2();
+    method public Boolean? component3();
+    method public Double? component4();
+    method public com.mapbox.maps.plugin.annotation.ClusterOptions? component5();
+    method public com.mapbox.maps.plugin.annotation.AnnotationSourceOptions copy(Long? maxZoom, Long? buffer, Boolean? lineMetrics, Double? tolerance, com.mapbox.maps.plugin.annotation.ClusterOptions? clusterOptions);
+    method public Long? getBuffer();
+    method public com.mapbox.maps.plugin.annotation.ClusterOptions? getClusterOptions();
+    method public Boolean? getLineMetrics();
+    method public Long? getMaxZoom();
+    method public Double? getTolerance();
+    property public final Long? buffer;
+    property public final com.mapbox.maps.plugin.annotation.ClusterOptions? clusterOptions;
+    property public final Boolean? lineMetrics;
+    property public final Long? maxZoom;
+    property public final Double? tolerance;
+  }
+
+  public enum AnnotationType {
+    method public final int getValue();
+    method public final void setValue(int p);
+    property public final int value;
+    enum_constant public static final com.mapbox.maps.plugin.annotation.AnnotationType Circle;
+    enum_constant public static final com.mapbox.maps.plugin.annotation.AnnotationType Fill;
+    enum_constant public static final com.mapbox.maps.plugin.annotation.AnnotationType Line;
+    enum_constant public static final com.mapbox.maps.plugin.annotation.AnnotationType Symbol;
+  }
+
+  public final class ClusterOptions {
+    ctor public ClusterOptions(boolean cluster = true, long clusterRadius = 50, com.mapbox.bindgen.Value? circleRadiusExpression = null, double circleRadius = 18.0, com.mapbox.bindgen.Value? textColorExpression = null, int textColor = -1, com.mapbox.bindgen.Value? textSizeExpression = null, double textSize = 12.0, com.mapbox.bindgen.Value? textField = null, long clusterMaxZoom = 14, java.util.List<kotlin.Pair<java.lang.Integer,java.lang.Integer>> colorLevels = listOf(<init>(0, Color.BLUE)), java.util.HashMap<java.lang.String,java.lang.Object>? clusterProperties = null);
+    method public boolean component1();
+    method public long component10();
+    method public java.util.List<kotlin.Pair<java.lang.Integer,java.lang.Integer>> component11();
+    method public java.util.HashMap<java.lang.String,java.lang.Object>? component12();
+    method public long component2();
+    method public com.mapbox.bindgen.Value? component3();
+    method public double component4();
+    method public com.mapbox.bindgen.Value? component5();
+    method public int component6();
+    method public com.mapbox.bindgen.Value? component7();
+    method public double component8();
+    method public com.mapbox.bindgen.Value? component9();
+    method public com.mapbox.maps.plugin.annotation.ClusterOptions copy(boolean cluster, long clusterRadius, com.mapbox.bindgen.Value? circleRadiusExpression, double circleRadius, com.mapbox.bindgen.Value? textColorExpression, int textColor, com.mapbox.bindgen.Value? textSizeExpression, double textSize, com.mapbox.bindgen.Value? textField, long clusterMaxZoom, java.util.List<kotlin.Pair<java.lang.Integer,java.lang.Integer>> colorLevels, java.util.HashMap<java.lang.String,java.lang.Object>? clusterProperties);
+    method public double getCircleRadius();
+    method public com.mapbox.bindgen.Value? getCircleRadiusExpression();
+    method public boolean getCluster();
+    method public long getClusterMaxZoom();
+    method public java.util.HashMap<java.lang.String,java.lang.Object>? getClusterProperties();
+    method public long getClusterRadius();
+    method public java.util.List<kotlin.Pair<java.lang.Integer,java.lang.Integer>> getColorLevels();
+    method public int getTextColor();
+    method public com.mapbox.bindgen.Value? getTextColorExpression();
+    method public com.mapbox.bindgen.Value? getTextField();
+    method public double getTextSize();
+    method public com.mapbox.bindgen.Value? getTextSizeExpression();
+    property public final double circleRadius;
+    property public final com.mapbox.bindgen.Value? circleRadiusExpression;
+    property public final boolean cluster;
+    property public final long clusterMaxZoom;
+    property public final java.util.HashMap<java.lang.String,java.lang.Object>? clusterProperties;
+    property public final long clusterRadius;
+    property public final java.util.List<kotlin.Pair<java.lang.Integer,java.lang.Integer>> colorLevels;
+    property public final int textColor;
+    property public final com.mapbox.bindgen.Value? textColorExpression;
+    property public final com.mapbox.bindgen.Value? textField;
+    property public final double textSize;
+    property public final com.mapbox.bindgen.Value? textSizeExpression;
+  }
+
+  public fun interface OnAnnotationClickListener<T extends com.mapbox.maps.plugin.annotation.Annotation<?>> {
+    method public boolean onAnnotationClick(T annotation);
+  }
+
+  public interface OnAnnotationDragListener<T extends com.mapbox.maps.plugin.annotation.Annotation<?>> {
+    method public void onAnnotationDrag(com.mapbox.maps.plugin.annotation.Annotation<?> annotation);
+    method public void onAnnotationDragFinished(com.mapbox.maps.plugin.annotation.Annotation<?> annotation);
+    method public void onAnnotationDragStarted(com.mapbox.maps.plugin.annotation.Annotation<?> annotation);
+  }
+
+  public fun interface OnAnnotationLongClickListener<T extends com.mapbox.maps.plugin.annotation.Annotation<?>> {
+    method public boolean onAnnotationLongClick(T annotation);
+  }
+
+}
+
+package com.mapbox.maps.plugin.attribution {
+
+  public final class Attribution {
+    ctor public Attribution(String title, String url);
+    method public String component1();
+    method public String component2();
+    method public com.mapbox.maps.plugin.attribution.Attribution copy(String title, String url);
+    method public String getTitle();
+    method public String getTitleAbbreviated();
+    method public String getUrl();
+    property public final String title;
+    property public final String titleAbbreviated;
+    property public final String url;
+    field public static final String ABOUT_MAPS_URL = "https://www.mapbox.com/about/maps/";
+    field public static final String ABOUT_TELEMETRY_URL = "https://www.mapbox.com/telemetry/";
+    field public static final com.mapbox.maps.plugin.attribution.Attribution.Companion Companion;
+    field public static final String OSM = "OpenStreetMap";
+    field public static final String OSM_ABBR = "OSM";
+    field public static final String TELEMETRY_SETTINGS = "Telemetry Settings";
+  }
+
+  public static final class Attribution.Companion {
+  }
+
+  public interface AttributionDialogManager {
+    method public void onStop();
+    method public void showAttribution(com.mapbox.maps.plugin.delegates.MapAttributionDelegate mapAttributionDelegate);
+  }
+
+  public final class AttributionParserConfig {
+    ctor public AttributionParserConfig(boolean withImproveMap = true, boolean withCopyrightSign = true, boolean withTelemetryAttribution = true, boolean withMapboxAttribution = true);
+    method public boolean getWithCopyrightSign();
+    method public boolean getWithImproveMap();
+    method public boolean getWithMapboxAttribution();
+    method public boolean getWithTelemetryAttribution();
+    method public void setWithCopyrightSign(boolean p);
+    method public void setWithImproveMap(boolean p);
+    method public void setWithMapboxAttribution(boolean p);
+    method public void setWithTelemetryAttribution(boolean p);
+    property public final boolean withCopyrightSign;
+    property public final boolean withImproveMap;
+    property public final boolean withMapboxAttribution;
+    property public final boolean withTelemetryAttribution;
+  }
+
+  public interface AttributionPlugin extends com.mapbox.maps.plugin.ViewPlugin com.mapbox.maps.plugin.attribution.generated.AttributionSettingsInterface com.mapbox.maps.plugin.LifecyclePlugin {
+    method public com.mapbox.maps.plugin.delegates.MapAttributionDelegate getMapAttributionDelegate();
+    method public void setCustomAttributionDialogManager(com.mapbox.maps.plugin.attribution.AttributionDialogManager dialogManager);
+  }
+
+  public interface AttributionView {
+    method public void setAttributionMargins(@Px int left, @Px int top, @Px int right, @Px int bottom);
+    method public void setEnable(boolean enabled);
+    method public void setGravity(int gravity);
+    method public void setIconColor(@ColorInt int color);
+    method public void setOnClickListener(android.view.View.OnClickListener listener);
+  }
+
+  public fun interface OnAttributionClickListener {
+    method public void onAttributionClick();
+  }
+
+}
+
+package com.mapbox.maps.plugin.attribution.generated {
+
+  public final class AttributionSettings {
+    ctor public AttributionSettings(boolean enabled = true, int iconColor = Color.parseColor("#FF1E8CAB"), int position = 8388691, float marginLeft = 92f, float marginTop = 4f, float marginRight = 4f, float marginBottom = 4f, boolean clickable = true);
+    method public boolean component1();
+    method public int component2();
+    method public int component3();
+    method public float component4();
+    method public float component5();
+    method public float component6();
+    method public float component7();
+    method public boolean component8();
+    method public com.mapbox.maps.plugin.attribution.generated.AttributionSettings copy(boolean enabled, int iconColor, int position, float marginLeft, float marginTop, float marginRight, float marginBottom, boolean clickable);
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public int getIconColor();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public void setClickable(boolean p);
+    method public void setEnabled(boolean p);
+    method public void setIconColor(int p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setPosition(int p);
+    property public final boolean clickable;
+    property public final boolean enabled;
+    property public final int iconColor;
+    property public final float marginBottom;
+    property public final float marginLeft;
+    property public final float marginRight;
+    property public final float marginTop;
+    property public final int position;
+  }
+
+  public abstract class AttributionSettingsBase implements com.mapbox.maps.plugin.attribution.generated.AttributionSettingsInterface {
+    ctor public AttributionSettingsBase();
+    method protected abstract void applySettings();
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public int getIconColor();
+    method protected abstract com.mapbox.maps.plugin.attribution.generated.AttributionSettings getInternalSettings();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public com.mapbox.maps.plugin.attribution.generated.AttributionSettings getSettings();
+    method public void setClickable(boolean value);
+    method public void setEnabled(boolean value);
+    method public void setIconColor(int value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.attribution.generated.AttributionSettings p);
+    method public void setMarginBottom(float value);
+    method public void setMarginLeft(float value);
+    method public void setMarginRight(float value);
+    method public void setMarginTop(float value);
+    method public void setPosition(int value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.attribution.generated.AttributionSettings,kotlin.Unit> block);
+    property public boolean clickable;
+    property public boolean enabled;
+    property public int iconColor;
+    property protected abstract com.mapbox.maps.plugin.attribution.generated.AttributionSettings internalSettings;
+    property public float marginBottom;
+    property public float marginLeft;
+    property public float marginRight;
+    property public float marginTop;
+    property public int position;
+  }
+
+  public interface AttributionSettingsInterface {
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public int getIconColor();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public com.mapbox.maps.plugin.attribution.generated.AttributionSettings getSettings();
+    method public void setClickable(boolean p);
+    method public void setEnabled(boolean p);
+    method public void setIconColor(int p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setPosition(int p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.attribution.generated.AttributionSettings,kotlin.Unit> block);
+    property public abstract boolean clickable;
+    property public abstract boolean enabled;
+    property public abstract int iconColor;
+    property public abstract float marginBottom;
+    property public abstract float marginLeft;
+    property public abstract float marginRight;
+    property public abstract float marginTop;
+    property public abstract int position;
+  }
+
+}
+
+package com.mapbox.maps.plugin.compass {
+
+  public interface CompassPlugin extends com.mapbox.maps.plugin.ViewPlugin com.mapbox.maps.plugin.compass.generated.CompassSettingsInterface com.mapbox.maps.plugin.LifecyclePlugin com.mapbox.maps.plugin.MapCameraPlugin {
+    method public void addCompassClickListener(com.mapbox.maps.plugin.compass.OnCompassClickListener onClickListener);
+    method public void onCompassClicked();
+    method public void removeCompassClickListener(com.mapbox.maps.plugin.compass.OnCompassClickListener onClickListener);
+  }
+
+  public interface CompassView {
+    method public int getCompassGravity();
+    method public android.graphics.drawable.Drawable getCompassImage();
+    method public float getCompassRotation();
+    method public boolean isCompassEnabled();
+    method public boolean isCompassVisible();
+    method public void setCompassAlpha(float p);
+    method public void setCompassEnabled(boolean p);
+    method public void setCompassGravity(int p);
+    method public void setCompassImage(android.graphics.drawable.Drawable p);
+    method public void setCompassMargins(@Px int left, @Px int top, @Px int right, @Px int bottom);
+    method public void setCompassRotation(float p);
+    method public void setCompassVisible(boolean p);
+    property public abstract int compassGravity;
+    property public abstract android.graphics.drawable.Drawable compassImage;
+    property public abstract float compassRotation;
+    property public abstract boolean isCompassEnabled;
+    property public abstract boolean isCompassVisible;
+  }
+
+  public fun interface OnCompassClickListener {
+    method public void onCompassClick();
+  }
+
+}
+
+package com.mapbox.maps.plugin.compass.generated {
+
+  public final class CompassSettings {
+    ctor public CompassSettings(boolean enabled = true, int position = 8388661, float marginLeft = 4f, float marginTop = 4f, float marginRight = 4f, float marginBottom = 4f, float opacity = 1f, float rotation = 0f, boolean visibility = true, boolean fadeWhenFacingNorth = true, boolean clickable = true, android.graphics.drawable.Drawable? image = null);
+    method public boolean component1();
+    method public boolean component10();
+    method public boolean component11();
+    method public android.graphics.drawable.Drawable? component12();
+    method public int component2();
+    method public float component3();
+    method public float component4();
+    method public float component5();
+    method public float component6();
+    method public float component7();
+    method public float component8();
+    method public boolean component9();
+    method public com.mapbox.maps.plugin.compass.generated.CompassSettings copy(boolean enabled, int position, float marginLeft, float marginTop, float marginRight, float marginBottom, float opacity, float rotation, boolean visibility, boolean fadeWhenFacingNorth, boolean clickable, android.graphics.drawable.Drawable? image);
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public boolean getFadeWhenFacingNorth();
+    method public android.graphics.drawable.Drawable? getImage();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public float getOpacity();
+    method public int getPosition();
+    method public float getRotation();
+    method public boolean getVisibility();
+    method public void setClickable(boolean p);
+    method public void setEnabled(boolean p);
+    method public void setFadeWhenFacingNorth(boolean p);
+    method public void setImage(android.graphics.drawable.Drawable? p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setOpacity(float p);
+    method public void setPosition(int p);
+    method public void setRotation(float p);
+    method public void setVisibility(boolean p);
+    property public final boolean clickable;
+    property public final boolean enabled;
+    property public final boolean fadeWhenFacingNorth;
+    property public final android.graphics.drawable.Drawable? image;
+    property public final float marginBottom;
+    property public final float marginLeft;
+    property public final float marginRight;
+    property public final float marginTop;
+    property public final float opacity;
+    property public final int position;
+    property public final float rotation;
+    property public final boolean visibility;
+  }
+
+  public abstract class CompassSettingsBase implements com.mapbox.maps.plugin.compass.generated.CompassSettingsInterface {
+    ctor public CompassSettingsBase();
+    method protected abstract void applySettings();
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public boolean getFadeWhenFacingNorth();
+    method public android.graphics.drawable.Drawable? getImage();
+    method protected abstract com.mapbox.maps.plugin.compass.generated.CompassSettings getInternalSettings();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public float getOpacity();
+    method public int getPosition();
+    method public float getRotation();
+    method public com.mapbox.maps.plugin.compass.generated.CompassSettings getSettings();
+    method public boolean getVisibility();
+    method public void setClickable(boolean value);
+    method public void setEnabled(boolean value);
+    method public void setFadeWhenFacingNorth(boolean value);
+    method public void setImage(android.graphics.drawable.Drawable? value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.compass.generated.CompassSettings p);
+    method public void setMarginBottom(float value);
+    method public void setMarginLeft(float value);
+    method public void setMarginRight(float value);
+    method public void setMarginTop(float value);
+    method public void setOpacity(float value);
+    method public void setPosition(int value);
+    method public void setRotation(float value);
+    method public void setVisibility(boolean value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.compass.generated.CompassSettings,kotlin.Unit> block);
+    property public boolean clickable;
+    property public boolean enabled;
+    property public boolean fadeWhenFacingNorth;
+    property public android.graphics.drawable.Drawable? image;
+    property protected abstract com.mapbox.maps.plugin.compass.generated.CompassSettings internalSettings;
+    property public float marginBottom;
+    property public float marginLeft;
+    property public float marginRight;
+    property public float marginTop;
+    property public float opacity;
+    property public int position;
+    property public float rotation;
+    property public boolean visibility;
+  }
+
+  public interface CompassSettingsInterface {
+    method public boolean getClickable();
+    method public boolean getEnabled();
+    method public boolean getFadeWhenFacingNorth();
+    method public android.graphics.drawable.Drawable? getImage();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public float getOpacity();
+    method public int getPosition();
+    method public float getRotation();
+    method public com.mapbox.maps.plugin.compass.generated.CompassSettings getSettings();
+    method public boolean getVisibility();
+    method public void setClickable(boolean p);
+    method public void setEnabled(boolean p);
+    method public void setFadeWhenFacingNorth(boolean p);
+    method public void setImage(android.graphics.drawable.Drawable? p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setOpacity(float p);
+    method public void setPosition(int p);
+    method public void setRotation(float p);
+    method public void setVisibility(boolean p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.compass.generated.CompassSettings,kotlin.Unit> block);
+    property public abstract boolean clickable;
+    property public abstract boolean enabled;
+    property public abstract boolean fadeWhenFacingNorth;
+    property public abstract android.graphics.drawable.Drawable? image;
+    property public abstract float marginBottom;
+    property public abstract float marginLeft;
+    property public abstract float marginRight;
+    property public abstract float marginTop;
+    property public abstract float opacity;
+    property public abstract int position;
+    property public abstract float rotation;
+    property public abstract boolean visibility;
+  }
+
+}
+
+package com.mapbox.maps.plugin.delegates {
+
+  public interface MapAttributionDelegate {
+    method public String buildMapBoxFeedbackUrl(android.content.Context context);
+    method public java.util.List<com.mapbox.maps.plugin.attribution.Attribution> parseAttributions(android.content.Context context, com.mapbox.maps.plugin.attribution.AttributionParserConfig config);
+    method public com.mapbox.maps.module.MapTelemetry telemetry();
+  }
+
+  public interface MapCameraDelegate {
+    method public kotlin.Pair<java.lang.Double,java.lang.Double>? getAnchor();
+    method public double getBearing();
+    method public com.mapbox.maps.CameraOptions getCameraOptions(com.mapbox.maps.EdgeInsets? edgeInsets = null);
+    method public double getLat();
+    method public double getLon();
+    method public Double![]? getPadding();
+    method public double getPitch();
+    method public double getZoom();
+    method public void setBearing(double bearing);
+  }
+
+  public interface MapDelegateProvider {
+    method public com.mapbox.maps.plugin.delegates.MapAttributionDelegate getMapAttributionDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapCameraDelegate getMapCameraDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapFeatureQueryDelegate getMapFeatureQueryDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapListenerDelegate getMapListenerDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapPluginProviderDelegate getMapPluginProviderDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapProjectionDelegate getMapProjectionDelegate();
+    method public com.mapbox.maps.plugin.delegates.MapTransformDelegate getMapTransformDelegate();
+    method public void getStyle(kotlin.jvm.functions.Function1<? super com.mapbox.maps.StyleManagerInterface,kotlin.Unit> callback);
+    method public com.mapbox.maps.plugin.delegates.MapStyleStateDelegate getStyleStateDelegate();
+    property public abstract com.mapbox.maps.plugin.delegates.MapAttributionDelegate mapAttributionDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapCameraDelegate mapCameraDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapFeatureQueryDelegate mapFeatureQueryDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapListenerDelegate mapListenerDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapPluginProviderDelegate mapPluginProviderDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapProjectionDelegate mapProjectionDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapTransformDelegate mapTransformDelegate;
+    property public abstract com.mapbox.maps.plugin.delegates.MapStyleStateDelegate styleStateDelegate;
+  }
+
+  public interface MapFeatureQueryDelegate {
+    method public void queryRenderedFeatures(java.util.List<com.mapbox.maps.ScreenCoordinate> shape, com.mapbox.maps.RenderedQueryOptions options, com.mapbox.maps.QueryFeaturesCallback callback);
+    method public void queryRenderedFeatures(com.mapbox.maps.ScreenBox box, com.mapbox.maps.RenderedQueryOptions options, com.mapbox.maps.QueryFeaturesCallback callback);
+    method public void queryRenderedFeatures(com.mapbox.maps.ScreenCoordinate pixel, com.mapbox.maps.RenderedQueryOptions options, com.mapbox.maps.QueryFeaturesCallback callback);
+    method public void querySourceFeatures(String sourceId, com.mapbox.maps.SourceQueryOptions options, com.mapbox.maps.QueryFeaturesCallback callback);
+  }
+
+  public interface MapListenerDelegate {
+    method public void addOnCameraChangeListener(com.mapbox.maps.plugin.delegates.listeners.OnCameraChangeListener onCameraChangeListener);
+    method public void addOnMapIdleListener(com.mapbox.maps.plugin.delegates.listeners.OnMapIdleListener onMapIdleListener);
+    method public void addOnMapLoadErrorListener(com.mapbox.maps.plugin.delegates.listeners.OnMapLoadErrorListener onMapLoadErrorListener);
+    method public void addOnMapLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnMapLoadedListener onMapLoadedListener);
+    method public void addOnRenderFrameFinishedListener(com.mapbox.maps.plugin.delegates.listeners.OnRenderFrameFinishedListener onRenderFrameFinishedListener);
+    method public void addOnRenderFrameStartedListener(com.mapbox.maps.plugin.delegates.listeners.OnRenderFrameStartedListener onRenderFrameStartedListener);
+    method public void addOnSourceAddedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceAddedListener onSourceAddedListener);
+    method public void addOnSourceDataLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceDataLoadedListener onSourceDataLoadedListener);
+    method public void addOnSourceRemovedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceRemovedListener onSourceRemovedListener);
+    method public void addOnStyleDataLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleDataLoadedListener onStyleDataLoadedListener);
+    method public void addOnStyleImageMissingListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleImageMissingListener onStyleImageMissingListener);
+    method public void addOnStyleImageUnusedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleImageUnusedListener onStyleImageUnusedListener);
+    method public void addOnStyleLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleLoadedListener onStyleLoadedListener);
+    method public void removeOnCameraChangeListener(com.mapbox.maps.plugin.delegates.listeners.OnCameraChangeListener onCameraChangeListener);
+    method public void removeOnMapIdleListener(com.mapbox.maps.plugin.delegates.listeners.OnMapIdleListener onMapIdleListener);
+    method public void removeOnMapLoadErrorListener(com.mapbox.maps.plugin.delegates.listeners.OnMapLoadErrorListener onMapLoadErrorListener);
+    method public void removeOnMapLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnMapLoadedListener onMapLoadedListener);
+    method public void removeOnRenderFrameFinishedListener(com.mapbox.maps.plugin.delegates.listeners.OnRenderFrameFinishedListener onRenderFrameFinishedListener);
+    method public void removeOnRenderFrameStartedListener(com.mapbox.maps.plugin.delegates.listeners.OnRenderFrameStartedListener onRenderFrameStartedListener);
+    method public void removeOnSourceAddedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceAddedListener onSourceAddedListener);
+    method public void removeOnSourceDataLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceDataLoadedListener onSourceDataLoadedListener);
+    method public void removeOnSourceRemovedListener(com.mapbox.maps.plugin.delegates.listeners.OnSourceRemovedListener onSourceRemovedListener);
+    method public void removeOnStyleDataLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleDataLoadedListener onStyleDataLoadedListener);
+    method public void removeOnStyleImageMissingListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleImageMissingListener onStyleImageMissingListener);
+    method public void removeOnStyleImageUnusedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleImageUnusedListener onStyleImageUnusedListener);
+    method public void removeOnStyleLoadedListener(com.mapbox.maps.plugin.delegates.listeners.OnStyleLoadedListener onStyleLoadedListener);
+  }
+
+  public interface MapPluginExtensionsDelegate {
+    method public Object? cameraAnimationsPlugin(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.animation.CameraAnimationsPlugin,?> function);
+    method public Object? gesturesPlugin(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.gestures.GesturesPlugin,?> function);
+  }
+
+  public interface MapPluginProviderDelegate {
+    method public <T> T? getPlugin(Class<T> clazz);
+    method public <T> T? getPlugin(String className);
+  }
+
+  public interface MapProjectionDelegate {
+    method public com.mapbox.maps.CameraOptions cameraForCoordinateBounds(com.mapbox.maps.CoordinateBounds coordinateBounds, com.mapbox.maps.EdgeInsets padding, Double? bearing, Double? pitch);
+    method public com.mapbox.maps.CameraOptions cameraForCoordinates(java.util.List<com.mapbox.geojson.Point> coordinates, com.mapbox.maps.EdgeInsets padding, Double? bearing, Double? pitch);
+    method public com.mapbox.maps.CameraOptions cameraForGeometry(com.mapbox.geojson.Geometry geometry, com.mapbox.maps.EdgeInsets padding, Double? bearing, Double? pitch);
+    method public com.mapbox.maps.CoordinateBounds coordinateBoundsForCamera(com.mapbox.maps.CameraOptions cameraOptions);
+    method public com.mapbox.maps.CoordinateBoundsZoom coordinateBoundsZoomForCamera(com.mapbox.maps.CameraOptions cameraOptions);
+    method public com.mapbox.maps.CoordinateBoundsZoom coordinateBoundsZoomForCameraUnwrapped(com.mapbox.maps.CameraOptions cameraOptions);
+    method public com.mapbox.geojson.Point coordinateForPixel(com.mapbox.maps.ScreenCoordinate screenCoordinate);
+    method public com.mapbox.geojson.Point coordinateForProjectedMeters(com.mapbox.maps.ProjectedMeters projectedMeters);
+    method public java.util.List<com.mapbox.geojson.Point> coordinatesForPixels(java.util.List<com.mapbox.maps.ScreenCoordinate> pixels);
+    method public double getMetersPerPixelAtLatitude(double latitude, double zoom);
+    method public double getMetersPerPixelAtLatitude(double latitude);
+    method public com.mapbox.maps.ScreenCoordinate pixelForCoordinate(com.mapbox.geojson.Point point);
+    method public java.util.List<com.mapbox.maps.ScreenCoordinate> pixelsForCoordinates(java.util.List<com.mapbox.geojson.Point> coordinates);
+    method public com.mapbox.maps.MercatorCoordinate project(com.mapbox.geojson.Point point, double zoomScale);
+    method public com.mapbox.maps.ProjectedMeters projectedMetersForCoordinate(com.mapbox.geojson.Point point);
+    method public com.mapbox.geojson.Point unproject(com.mapbox.maps.MercatorCoordinate coordinate, double zoomScale);
+  }
+
+  public fun interface MapStyleStateDelegate {
+    method public boolean isFullyLoaded();
+  }
+
+  public interface MapTransformDelegate {
+    method public void drag(com.mapbox.maps.ScreenCoordinate fromPoint, com.mapbox.maps.ScreenCoordinate toPoint, com.mapbox.maps.AnimationOptions? animation);
+    method public void dragEnd();
+    method public void dragStart(com.mapbox.maps.ScreenCoordinate point);
+    method public com.mapbox.maps.BoundOptions getBounds();
+    method public com.mapbox.maps.CameraOptions getCameraOptions(com.mapbox.maps.EdgeInsets? edgeInsets = null);
+    method public com.mapbox.maps.CameraOptions getDragCameraOptions(com.mapbox.maps.ScreenCoordinate fromPoint, com.mapbox.maps.ScreenCoordinate toPoint);
+    method public com.mapbox.maps.MapOptions getMapOptions();
+    method public double getMaxZoom();
+    method public double getMinZoom();
+    method public double getScale();
+    method public com.mapbox.maps.Size getSize();
+    method public boolean isGestureInProgress();
+    method public boolean isUserAnimationInProgress();
+    method public void setBounds(com.mapbox.maps.BoundOptions boundOptions);
+    method public void setCamera(com.mapbox.maps.CameraOptions cameraOptions);
+    method public void setConstrainMode(com.mapbox.maps.ConstrainMode constrainMode);
+    method public void setGestureInProgress(boolean inProgress);
+    method public void setNorthOrientation(com.mapbox.maps.NorthOrientation northOrientation);
+    method public void setUserAnimationInProgress(boolean inProgress);
+    method public void setViewportMode(com.mapbox.maps.ViewportMode viewportMode);
+  }
+
+}
+
+package com.mapbox.maps.plugin.delegates.listeners {
+
+  public fun interface OnCameraChangeListener {
+    method public void onCameraChanged();
+  }
+
+  public fun interface OnMapIdleListener {
+    method public void onMapIdle();
+  }
+
+  public interface OnMapLoadErrorListener {
+    method public void onMapLoadError(com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType mapLoadErrorType, String message);
+  }
+
+  public fun interface OnMapLoadedListener {
+    method public void onMapLoaded();
+  }
+
+  public fun interface OnRenderFrameFinishedListener {
+    method public void onRenderFrameFinished(com.mapbox.maps.plugin.delegates.listeners.eventdata.RenderMode renderMode, boolean needsRepaint, boolean placementChanged);
+  }
+
+  public fun interface OnRenderFrameStartedListener {
+    method public void onRenderFrameStarted();
+  }
+
+  public fun interface OnSourceAddedListener {
+    method public void onSourceAdded(String id);
+  }
+
+  public fun interface OnSourceDataLoadedListener {
+    method public void onSourceDataLoaded(String id, com.mapbox.maps.plugin.delegates.listeners.eventdata.SourceDataType type, Boolean? loaded, com.mapbox.maps.plugin.delegates.listeners.eventdata.TileID? tileID);
+  }
+
+  public fun interface OnSourceRemovedListener {
+    method public void onSourceRemoved(String id);
+  }
+
+  public fun interface OnStyleDataLoadedListener {
+    method public void onStyleDataLoaded(com.mapbox.maps.plugin.delegates.listeners.eventdata.StyleDataType type);
+  }
+
+  public fun interface OnStyleImageMissingListener {
+    method public void onStyleImageMissing(String id);
+  }
+
+  public fun interface OnStyleImageUnusedListener {
+    method public void onStyleImageUnused(String id);
+  }
+
+  public fun interface OnStyleLoadedListener {
+    method public void onStyleLoaded();
+  }
+
+}
+
+package com.mapbox.maps.plugin.delegates.listeners.eventdata {
+
+  public enum MapLoadErrorType {
+    enum_constant @com.google.gson.annotations.SerializedName("glyphs") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType GLYPHS;
+    enum_constant @com.google.gson.annotations.SerializedName("source") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType SOURCE;
+    enum_constant @com.google.gson.annotations.SerializedName("sprite") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType SPRITE;
+    enum_constant @com.google.gson.annotations.SerializedName("style") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType STYLE;
+    enum_constant @com.google.gson.annotations.SerializedName("tile") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.MapLoadErrorType TILE;
+  }
+
+  public enum RenderMode {
+    enum_constant @com.google.gson.annotations.SerializedName("full") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.RenderMode FULL;
+    enum_constant @com.google.gson.annotations.SerializedName("partial") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.RenderMode PARTIAL;
+  }
+
+  public enum SourceDataType {
+    enum_constant @com.google.gson.annotations.SerializedName("metadata") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.SourceDataType METADATA;
+    enum_constant @com.google.gson.annotations.SerializedName("tile") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.SourceDataType TILE;
+  }
+
+  public enum StyleDataType {
+    enum_constant @com.google.gson.annotations.SerializedName("sources") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.StyleDataType SOURCES;
+    enum_constant @com.google.gson.annotations.SerializedName("sprite") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.StyleDataType SPRITE;
+    enum_constant @com.google.gson.annotations.SerializedName("style") public static final com.mapbox.maps.plugin.delegates.listeners.eventdata.StyleDataType STYLE;
+  }
+
+  public final class TileID {
+    ctor public TileID(@com.google.gson.annotations.SerializedName("z") double zoom, @com.google.gson.annotations.SerializedName("x") double x, @com.google.gson.annotations.SerializedName("y") double y);
+    method public double component1();
+    method public double component2();
+    method public double component3();
+    method public com.mapbox.maps.plugin.delegates.listeners.eventdata.TileID copy(double zoom, double x, double y);
+    method public double getX();
+    method public double getY();
+    method public double getZoom();
+    property public final double x;
+    property public final double y;
+    property public final double zoom;
+  }
+
+}
+
+package com.mapbox.maps.plugin.gestures {
+
+  public interface GesturesPlugin extends com.mapbox.maps.plugin.MapPlugin com.mapbox.maps.plugin.ContextBinder com.mapbox.maps.plugin.gestures.generated.GesturesSettingsInterface com.mapbox.maps.plugin.MapSizePlugin {
+    method public void addOnFlingListener(com.mapbox.maps.plugin.gestures.OnFlingListener onFlingListener);
+    method public void addOnMapClickListener(com.mapbox.maps.plugin.gestures.OnMapClickListener onMapClickListener);
+    method public void addOnMapLongClickListener(com.mapbox.maps.plugin.gestures.OnMapLongClickListener onMapLongClickListener);
+    method public void addOnMoveListener(com.mapbox.maps.plugin.gestures.OnMoveListener onMoveListener);
+    method public void addOnRotateListener(com.mapbox.maps.plugin.gestures.OnRotateListener onRotateListener);
+    method public void addOnScaleListener(com.mapbox.maps.plugin.gestures.OnScaleListener onScaleListener);
+    method public void addOnShoveListener(com.mapbox.maps.plugin.gestures.OnShoveListener onShoveListener);
+    method public void addProtectedAnimationOwner(String owner);
+    method public com.mapbox.android.gestures.AndroidGesturesManager getGesturesManager();
+    method public boolean onGenericMotionEvent(android.view.MotionEvent event);
+    method public boolean onTouchEvent(android.view.MotionEvent? motionEvent);
+    method public void removeOnFlingListener(com.mapbox.maps.plugin.gestures.OnFlingListener onFlingListener);
+    method public void removeOnMapClickListener(com.mapbox.maps.plugin.gestures.OnMapClickListener onMapClickListener);
+    method public void removeOnMapLongClickListener(com.mapbox.maps.plugin.gestures.OnMapLongClickListener onMapLongClickListener);
+    method public void removeOnMoveListener(com.mapbox.maps.plugin.gestures.OnMoveListener listener);
+    method public void removeOnRotateListener(com.mapbox.maps.plugin.gestures.OnRotateListener listener);
+    method public void removeOnScaleListener(com.mapbox.maps.plugin.gestures.OnScaleListener listener);
+    method public void removeOnShoveListener(com.mapbox.maps.plugin.gestures.OnShoveListener listener);
+    method public void removeProtectedAnimationOwner(String owner);
+    method public void setGesturesManager(com.mapbox.android.gestures.AndroidGesturesManager internalGesturesManager, boolean attachDefaultListeners, boolean setDefaultMutuallyExclusives);
+  }
+
+  public fun interface OnFlingListener {
+    method public void onFling();
+  }
+
+  public fun interface OnMapClickListener {
+    method public boolean onMapClick(com.mapbox.geojson.Point point);
+  }
+
+  public fun interface OnMapLongClickListener {
+    method public boolean onMapLongClick(com.mapbox.geojson.Point point);
+  }
+
+  public interface OnMoveListener {
+    method public boolean onMove(com.mapbox.android.gestures.MoveGestureDetector detector);
+    method public void onMoveBegin(com.mapbox.android.gestures.MoveGestureDetector detector);
+    method public void onMoveEnd(com.mapbox.android.gestures.MoveGestureDetector detector);
+  }
+
+  public interface OnRotateListener {
+    method public void onRotate(com.mapbox.android.gestures.RotateGestureDetector detector);
+    method public void onRotateBegin(com.mapbox.android.gestures.RotateGestureDetector detector);
+    method public void onRotateEnd(com.mapbox.android.gestures.RotateGestureDetector detector);
+  }
+
+  public interface OnScaleListener {
+    method public void onScale(com.mapbox.android.gestures.StandardScaleGestureDetector detector);
+    method public void onScaleBegin(com.mapbox.android.gestures.StandardScaleGestureDetector detector);
+    method public void onScaleEnd(com.mapbox.android.gestures.StandardScaleGestureDetector detector);
+  }
+
+  public interface OnShoveListener {
+    method public void onShove(com.mapbox.android.gestures.ShoveGestureDetector detector);
+    method public void onShoveBegin(com.mapbox.android.gestures.ShoveGestureDetector detector);
+    method public void onShoveEnd(com.mapbox.android.gestures.ShoveGestureDetector detector);
+  }
+
+}
+
+package com.mapbox.maps.plugin.gestures.generated {
+
+  public final class GesturesSettings {
+    ctor public GesturesSettings(boolean rotateEnabled = true, boolean zoomEnabled = true, boolean scrollEnabled = true, boolean pitchEnabled = true, boolean doubleTapToZoomEnabled = true, boolean quickZoomEnabled = true, com.mapbox.maps.ScreenCoordinate? focalPoint = null, boolean scaleVelocityAnimationEnabled = true, boolean rotateVelocityAnimationEnabled = true, boolean flingVelocityAnimationEnabled = true, boolean increaseRotateThresholdWhenScaling = true, boolean disableRotateWhenScaling = true, boolean increaseScaleThresholdWhenRotating = true, float zoomRate = 1f, float pixelRatio = 1f);
+    method public boolean component1();
+    method public boolean component10();
+    method public boolean component11();
+    method public boolean component12();
+    method public boolean component13();
+    method public float component14();
+    method public float component15();
+    method public boolean component2();
+    method public boolean component3();
+    method public boolean component4();
+    method public boolean component5();
+    method public boolean component6();
+    method public com.mapbox.maps.ScreenCoordinate? component7();
+    method public boolean component8();
+    method public boolean component9();
+    method public com.mapbox.maps.plugin.gestures.generated.GesturesSettings copy(boolean rotateEnabled, boolean zoomEnabled, boolean scrollEnabled, boolean pitchEnabled, boolean doubleTapToZoomEnabled, boolean quickZoomEnabled, com.mapbox.maps.ScreenCoordinate? focalPoint, boolean scaleVelocityAnimationEnabled, boolean rotateVelocityAnimationEnabled, boolean flingVelocityAnimationEnabled, boolean increaseRotateThresholdWhenScaling, boolean disableRotateWhenScaling, boolean increaseScaleThresholdWhenRotating, float zoomRate, float pixelRatio);
+    method public boolean getDisableRotateWhenScaling();
+    method public boolean getDoubleTapToZoomEnabled();
+    method public boolean getFlingVelocityAnimationEnabled();
+    method public com.mapbox.maps.ScreenCoordinate? getFocalPoint();
+    method public boolean getIncreaseRotateThresholdWhenScaling();
+    method public boolean getIncreaseScaleThresholdWhenRotating();
+    method public boolean getPitchEnabled();
+    method public float getPixelRatio();
+    method public boolean getQuickZoomEnabled();
+    method public boolean getRotateEnabled();
+    method public boolean getRotateVelocityAnimationEnabled();
+    method public boolean getScaleVelocityAnimationEnabled();
+    method public boolean getScrollEnabled();
+    method public boolean getZoomEnabled();
+    method public float getZoomRate();
+    method public void setDisableRotateWhenScaling(boolean p);
+    method public void setDoubleTapToZoomEnabled(boolean p);
+    method public void setFlingVelocityAnimationEnabled(boolean p);
+    method public void setFocalPoint(com.mapbox.maps.ScreenCoordinate? p);
+    method public void setIncreaseRotateThresholdWhenScaling(boolean p);
+    method public void setIncreaseScaleThresholdWhenRotating(boolean p);
+    method public void setPitchEnabled(boolean p);
+    method public void setPixelRatio(float p);
+    method public void setQuickZoomEnabled(boolean p);
+    method public void setRotateEnabled(boolean p);
+    method public void setRotateVelocityAnimationEnabled(boolean p);
+    method public void setScaleVelocityAnimationEnabled(boolean p);
+    method public void setScrollEnabled(boolean p);
+    method public void setZoomEnabled(boolean p);
+    method public void setZoomRate(float p);
+    property public final boolean disableRotateWhenScaling;
+    property public final boolean doubleTapToZoomEnabled;
+    property public final boolean flingVelocityAnimationEnabled;
+    property public final com.mapbox.maps.ScreenCoordinate? focalPoint;
+    property public final boolean increaseRotateThresholdWhenScaling;
+    property public final boolean increaseScaleThresholdWhenRotating;
+    property public final boolean pitchEnabled;
+    property public final float pixelRatio;
+    property public final boolean quickZoomEnabled;
+    property public final boolean rotateEnabled;
+    property public final boolean rotateVelocityAnimationEnabled;
+    property public final boolean scaleVelocityAnimationEnabled;
+    property public final boolean scrollEnabled;
+    property public final boolean zoomEnabled;
+    property public final float zoomRate;
+  }
+
+  public abstract class GesturesSettingsBase implements com.mapbox.maps.plugin.gestures.generated.GesturesSettingsInterface {
+    ctor public GesturesSettingsBase();
+    method protected abstract void applySettings();
+    method public boolean getDisableRotateWhenScaling();
+    method public boolean getDoubleTapToZoomEnabled();
+    method public boolean getFlingVelocityAnimationEnabled();
+    method public com.mapbox.maps.ScreenCoordinate? getFocalPoint();
+    method public boolean getIncreaseRotateThresholdWhenScaling();
+    method public boolean getIncreaseScaleThresholdWhenRotating();
+    method protected abstract com.mapbox.maps.plugin.gestures.generated.GesturesSettings getInternalSettings();
+    method public boolean getPitchEnabled();
+    method public float getPixelRatio();
+    method public boolean getQuickZoomEnabled();
+    method public boolean getRotateEnabled();
+    method public boolean getRotateVelocityAnimationEnabled();
+    method public boolean getScaleVelocityAnimationEnabled();
+    method public boolean getScrollEnabled();
+    method public com.mapbox.maps.plugin.gestures.generated.GesturesSettings getSettings();
+    method public boolean getZoomEnabled();
+    method public float getZoomRate();
+    method public void setDisableRotateWhenScaling(boolean value);
+    method public void setDoubleTapToZoomEnabled(boolean value);
+    method public void setFlingVelocityAnimationEnabled(boolean value);
+    method public void setFocalPoint(com.mapbox.maps.ScreenCoordinate? value);
+    method public void setIncreaseRotateThresholdWhenScaling(boolean value);
+    method public void setIncreaseScaleThresholdWhenRotating(boolean value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.gestures.generated.GesturesSettings p);
+    method public void setPitchEnabled(boolean value);
+    method public void setPixelRatio(float value);
+    method public void setQuickZoomEnabled(boolean value);
+    method public void setRotateEnabled(boolean value);
+    method public void setRotateVelocityAnimationEnabled(boolean value);
+    method public void setScaleVelocityAnimationEnabled(boolean value);
+    method public void setScrollEnabled(boolean value);
+    method public void setZoomEnabled(boolean value);
+    method public void setZoomRate(float value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.gestures.generated.GesturesSettings,kotlin.Unit> block);
+    property public boolean disableRotateWhenScaling;
+    property public boolean doubleTapToZoomEnabled;
+    property public boolean flingVelocityAnimationEnabled;
+    property public com.mapbox.maps.ScreenCoordinate? focalPoint;
+    property public boolean increaseRotateThresholdWhenScaling;
+    property public boolean increaseScaleThresholdWhenRotating;
+    property protected abstract com.mapbox.maps.plugin.gestures.generated.GesturesSettings internalSettings;
+    property public boolean pitchEnabled;
+    property public float pixelRatio;
+    property public boolean quickZoomEnabled;
+    property public boolean rotateEnabled;
+    property public boolean rotateVelocityAnimationEnabled;
+    property public boolean scaleVelocityAnimationEnabled;
+    property public boolean scrollEnabled;
+    property public boolean zoomEnabled;
+    property public float zoomRate;
+  }
+
+  public interface GesturesSettingsInterface {
+    method public boolean getDisableRotateWhenScaling();
+    method public boolean getDoubleTapToZoomEnabled();
+    method public boolean getFlingVelocityAnimationEnabled();
+    method public com.mapbox.maps.ScreenCoordinate? getFocalPoint();
+    method public boolean getIncreaseRotateThresholdWhenScaling();
+    method public boolean getIncreaseScaleThresholdWhenRotating();
+    method public boolean getPitchEnabled();
+    method public float getPixelRatio();
+    method public boolean getQuickZoomEnabled();
+    method public boolean getRotateEnabled();
+    method public boolean getRotateVelocityAnimationEnabled();
+    method public boolean getScaleVelocityAnimationEnabled();
+    method public boolean getScrollEnabled();
+    method public com.mapbox.maps.plugin.gestures.generated.GesturesSettings getSettings();
+    method public boolean getZoomEnabled();
+    method public float getZoomRate();
+    method public void setDisableRotateWhenScaling(boolean p);
+    method public void setDoubleTapToZoomEnabled(boolean p);
+    method public void setFlingVelocityAnimationEnabled(boolean p);
+    method public void setFocalPoint(com.mapbox.maps.ScreenCoordinate? p);
+    method public void setIncreaseRotateThresholdWhenScaling(boolean p);
+    method public void setIncreaseScaleThresholdWhenRotating(boolean p);
+    method public void setPitchEnabled(boolean p);
+    method public void setPixelRatio(float p);
+    method public void setQuickZoomEnabled(boolean p);
+    method public void setRotateEnabled(boolean p);
+    method public void setRotateVelocityAnimationEnabled(boolean p);
+    method public void setScaleVelocityAnimationEnabled(boolean p);
+    method public void setScrollEnabled(boolean p);
+    method public void setZoomEnabled(boolean p);
+    method public void setZoomRate(float p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.gestures.generated.GesturesSettings,kotlin.Unit> block);
+    property public abstract boolean disableRotateWhenScaling;
+    property public abstract boolean doubleTapToZoomEnabled;
+    property public abstract boolean flingVelocityAnimationEnabled;
+    property public abstract com.mapbox.maps.ScreenCoordinate? focalPoint;
+    property public abstract boolean increaseRotateThresholdWhenScaling;
+    property public abstract boolean increaseScaleThresholdWhenRotating;
+    property public abstract boolean pitchEnabled;
+    property public abstract float pixelRatio;
+    property public abstract boolean quickZoomEnabled;
+    property public abstract boolean rotateEnabled;
+    property public abstract boolean rotateVelocityAnimationEnabled;
+    property public abstract boolean scaleVelocityAnimationEnabled;
+    property public abstract boolean scrollEnabled;
+    property public abstract boolean zoomEnabled;
+    property public abstract float zoomRate;
+  }
+
+}
+
+package com.mapbox.maps.plugin.location {
+
+  @Deprecated public interface LocationPlugin extends com.mapbox.maps.plugin.MapStyleObserverPlugin com.mapbox.maps.plugin.LifecyclePlugin com.mapbox.maps.plugin.MapCameraPlugin {
+  }
+
+}
+
+package com.mapbox.maps.plugin.locationcomponent {
+
+  public interface LocationComponentPlugin extends com.mapbox.maps.plugin.MapPlugin com.mapbox.maps.plugin.ContextBinder com.mapbox.maps.plugin.LifecyclePlugin com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettingsInterface com.mapbox.maps.plugin.MapStyleObserverPlugin {
+    method public void addOnIndicatorBearingChangedListener(com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener listener);
+    method public void addOnIndicatorPositionChangedListener(com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener listener);
+    method public com.mapbox.maps.plugin.locationcomponent.LocationProvider? getLocationProvider();
+    method public void isLocatedAt(com.mapbox.geojson.Point point, com.mapbox.maps.plugin.locationcomponent.PuckLocatedAtPointListener listener);
+    method public void removeOnIndicatorBearingChangedListener(com.mapbox.maps.plugin.locationcomponent.OnIndicatorBearingChangedListener listener);
+    method public void removeOnIndicatorPositionChangedListener(com.mapbox.maps.plugin.locationcomponent.OnIndicatorPositionChangedListener listener);
+    method public void setLocationProvider(com.mapbox.maps.plugin.locationcomponent.LocationProvider locationProvider);
+  }
+
+  public interface LocationConsumer {
+    method public void onBearingUpdated(double[] bearing, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? options = null);
+    method public void onLocationUpdated(com.mapbox.geojson.Point![] location, kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit>? options = null);
+    method public void onPuckBearingAnimatorDefaultOptionsUpdated(kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> options);
+    method public void onPuckLocationAnimatorDefaultOptionsUpdated(kotlin.jvm.functions.Function1<? super android.animation.ValueAnimator,kotlin.Unit> options);
+  }
+
+  public interface LocationProvider {
+    method public void registerLocationConsumer(com.mapbox.maps.plugin.locationcomponent.LocationConsumer locationConsumer);
+    method public void unRegisterLocationConsumer(com.mapbox.maps.plugin.locationcomponent.LocationConsumer locationConsumer);
+  }
+
+  public fun interface OnIndicatorBearingChangedListener {
+    method public void onIndicatorBearingChanged(double bearing);
+  }
+
+  public fun interface OnIndicatorPositionChangedListener {
+    method public void onIndicatorPositionChanged(com.mapbox.geojson.Point point);
+  }
+
+  public fun interface PuckLocatedAtPointListener {
+    method public void onResult(boolean isPuckLocatedAtPoint);
+  }
+
+}
+
+package com.mapbox.maps.plugin.locationcomponent.generated {
+
+  public final class LocationComponentSettings {
+    ctor public LocationComponentSettings(boolean enabled = false, boolean pulsingEnabled = false, int pulsingColor = Color.parseColor("#4A90E2"), float pulsingMaxRadius = 10f, String? layerAbove = null, String? layerBelow = null, com.mapbox.maps.plugin.LocationPuck locationPuck);
+    method public boolean component1();
+    method public boolean component2();
+    method public int component3();
+    method public float component4();
+    method public String? component5();
+    method public String? component6();
+    method public com.mapbox.maps.plugin.LocationPuck component7();
+    method public com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings copy(boolean enabled, boolean pulsingEnabled, int pulsingColor, float pulsingMaxRadius, String? layerAbove, String? layerBelow, com.mapbox.maps.plugin.LocationPuck locationPuck);
+    method public boolean getEnabled();
+    method public String? getLayerAbove();
+    method public String? getLayerBelow();
+    method public com.mapbox.maps.plugin.LocationPuck getLocationPuck();
+    method public int getPulsingColor();
+    method public boolean getPulsingEnabled();
+    method public float getPulsingMaxRadius();
+    method public void setEnabled(boolean p);
+    method public void setLayerAbove(String? p);
+    method public void setLayerBelow(String? p);
+    method public void setLocationPuck(com.mapbox.maps.plugin.LocationPuck p);
+    method public void setPulsingColor(int p);
+    method public void setPulsingEnabled(boolean p);
+    method public void setPulsingMaxRadius(float p);
+    property public final boolean enabled;
+    property public final String? layerAbove;
+    property public final String? layerBelow;
+    property public final com.mapbox.maps.plugin.LocationPuck locationPuck;
+    property public final int pulsingColor;
+    property public final boolean pulsingEnabled;
+    property public final float pulsingMaxRadius;
+  }
+
+  public abstract class LocationComponentSettingsBase implements com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettingsInterface {
+    ctor public LocationComponentSettingsBase();
+    method protected abstract void applySettings();
+    method public boolean getEnabled();
+    method protected abstract com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings getInternalSettings();
+    method public String? getLayerAbove();
+    method public String? getLayerBelow();
+    method public com.mapbox.maps.plugin.LocationPuck getLocationPuck();
+    method public int getPulsingColor();
+    method public boolean getPulsingEnabled();
+    method public float getPulsingMaxRadius();
+    method public com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings getSettings();
+    method public void setEnabled(boolean value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings p);
+    method public void setLayerAbove(String? value);
+    method public void setLayerBelow(String? value);
+    method public void setLocationPuck(com.mapbox.maps.plugin.LocationPuck value);
+    method public void setPulsingColor(int value);
+    method public void setPulsingEnabled(boolean value);
+    method public void setPulsingMaxRadius(float value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings,kotlin.Unit> block);
+    property public boolean enabled;
+    property protected abstract com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings internalSettings;
+    property public String? layerAbove;
+    property public String? layerBelow;
+    property public com.mapbox.maps.plugin.LocationPuck locationPuck;
+    property public int pulsingColor;
+    property public boolean pulsingEnabled;
+    property public float pulsingMaxRadius;
+  }
+
+  public interface LocationComponentSettingsInterface {
+    method public boolean getEnabled();
+    method public String? getLayerAbove();
+    method public String? getLayerBelow();
+    method public com.mapbox.maps.plugin.LocationPuck getLocationPuck();
+    method public int getPulsingColor();
+    method public boolean getPulsingEnabled();
+    method public float getPulsingMaxRadius();
+    method public com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings getSettings();
+    method public void setEnabled(boolean p);
+    method public void setLayerAbove(String? p);
+    method public void setLayerBelow(String? p);
+    method public void setLocationPuck(com.mapbox.maps.plugin.LocationPuck p);
+    method public void setPulsingColor(int p);
+    method public void setPulsingEnabled(boolean p);
+    method public void setPulsingMaxRadius(float p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.locationcomponent.generated.LocationComponentSettings,kotlin.Unit> block);
+    property public abstract boolean enabled;
+    property public abstract String? layerAbove;
+    property public abstract String? layerBelow;
+    property public abstract com.mapbox.maps.plugin.LocationPuck locationPuck;
+    property public abstract int pulsingColor;
+    property public abstract boolean pulsingEnabled;
+    property public abstract float pulsingMaxRadius;
+  }
+
+}
+
+package com.mapbox.maps.plugin.logo {
+
+  public interface LogoPlugin extends com.mapbox.maps.plugin.ViewPlugin com.mapbox.maps.plugin.logo.generated.LogoSettingsInterface {
+  }
+
+  public interface LogoView {
+    method public boolean getLogoEnabled();
+    method public int getLogoGravity();
+    method public void setLogoEnabled(boolean p);
+    method public void setLogoGravity(int p);
+    method public void setLogoMargins(@Px int left, @Px int top, @Px int right, @Px int bottom);
+    property public abstract boolean logoEnabled;
+    property public abstract int logoGravity;
+  }
+
+}
+
+package com.mapbox.maps.plugin.logo.generated {
+
+  public final class LogoSettings {
+    ctor public LogoSettings(boolean enabled = true, int position = 8388691, float marginLeft = 4f, float marginTop = 4f, float marginRight = 4f, float marginBottom = 4f);
+    method public boolean component1();
+    method public int component2();
+    method public float component3();
+    method public float component4();
+    method public float component5();
+    method public float component6();
+    method public com.mapbox.maps.plugin.logo.generated.LogoSettings copy(boolean enabled, int position, float marginLeft, float marginTop, float marginRight, float marginBottom);
+    method public boolean getEnabled();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public void setEnabled(boolean p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setPosition(int p);
+    property public final boolean enabled;
+    property public final float marginBottom;
+    property public final float marginLeft;
+    property public final float marginRight;
+    property public final float marginTop;
+    property public final int position;
+  }
+
+  public abstract class LogoSettingsBase implements com.mapbox.maps.plugin.logo.generated.LogoSettingsInterface {
+    ctor public LogoSettingsBase();
+    method protected abstract void applySettings();
+    method public boolean getEnabled();
+    method protected abstract com.mapbox.maps.plugin.logo.generated.LogoSettings getInternalSettings();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public com.mapbox.maps.plugin.logo.generated.LogoSettings getSettings();
+    method public void setEnabled(boolean value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.logo.generated.LogoSettings p);
+    method public void setMarginBottom(float value);
+    method public void setMarginLeft(float value);
+    method public void setMarginRight(float value);
+    method public void setMarginTop(float value);
+    method public void setPosition(int value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.logo.generated.LogoSettings,kotlin.Unit> block);
+    property public boolean enabled;
+    property protected abstract com.mapbox.maps.plugin.logo.generated.LogoSettings internalSettings;
+    property public float marginBottom;
+    property public float marginLeft;
+    property public float marginRight;
+    property public float marginTop;
+    property public int position;
+  }
+
+  public interface LogoSettingsInterface {
+    method public boolean getEnabled();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public com.mapbox.maps.plugin.logo.generated.LogoSettings getSettings();
+    method public void setEnabled(boolean p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setPosition(int p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.logo.generated.LogoSettings,kotlin.Unit> block);
+    property public abstract boolean enabled;
+    property public abstract float marginBottom;
+    property public abstract float marginLeft;
+    property public abstract float marginRight;
+    property public abstract float marginTop;
+    property public abstract int position;
+  }
+
+}
+
+package com.mapbox.maps.plugin.overlay {
+
+  public fun interface MapOverlayCoordinatesProvider {
+    method public java.util.List<com.mapbox.geojson.Point> getShownCoordinates();
+  }
+
+  public interface MapOverlayPlugin extends com.mapbox.maps.plugin.MapSizePlugin com.mapbox.maps.plugin.MapPlugin {
+    method public com.mapbox.maps.EdgeInsets getEdgeInsets();
+    method public void reframe(com.mapbox.maps.plugin.overlay.OnReframeFinished? onReframeFinished = null);
+    method public void registerMapOverlayCoordinatesProvider(com.mapbox.maps.plugin.overlay.MapOverlayCoordinatesProvider provider);
+    method public void registerOverlay(android.view.View overlay);
+    method public void registerOverlays(java.util.List<? extends android.view.View> overlays);
+    method public void setDisplayingAreaMargins(int marginTop, int marginLeft, int marginBottom, int marginRight);
+    method public void unregisterMapOverlayCoordinatesProvider();
+    method public void unregisterOverlay(android.view.View overlay);
+    method public void unregisterOverlays(java.util.List<? extends android.view.View> overlays);
+  }
+
+  public fun interface OnReframeFinished {
+    method public void onReframeFinished(com.mapbox.maps.CameraOptions? cameraOptions);
+  }
+
+}
+
+package com.mapbox.maps.plugin.scalebar {
+
+  public interface ScaleBar {
+    method public float getDistancePerPixel();
+    method public boolean getEnable();
+    method public float getMapViewWidth();
+    method public com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings getSettings();
+    method public void setDistancePerPixel(float p);
+    method public void setEnable(boolean p);
+    method public void setMapViewWidth(float p);
+    method public void setSettings(com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings p);
+    property public abstract float distancePerPixel;
+    property public abstract boolean enable;
+    property public abstract float mapViewWidth;
+    property public abstract com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings settings;
+  }
+
+  public interface ScaleBarPlugin extends com.mapbox.maps.plugin.ViewPlugin com.mapbox.maps.plugin.MapSizePlugin com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettingsInterface {
+    method public float getDistancePerPixel();
+    method public void setDistancePerPixel(float p);
+    property public abstract float distancePerPixel;
+  }
+
+}
+
+package com.mapbox.maps.plugin.scalebar.generated {
+
+  public final class ScaleBarSettings {
+    ctor public ScaleBarSettings(boolean enabled = true, int position = 8388659, float marginLeft = 4f, float marginTop = 4f, float marginRight = 4f, float marginBottom = 4f, int textColor = -16777216, int primaryColor = -16777216, int secondaryColor = -1, float borderWidth = 2f, float height = 2f, float textBarMargin = 8f, float textBorderWidth = 2f, float textSize = 8f, boolean isMetricUnits = true, long refreshInterval = 15, boolean showTextBorder = true, float ratio = 0.5f);
+    method public boolean component1();
+    method public float component10();
+    method public float component11();
+    method public float component12();
+    method public float component13();
+    method public float component14();
+    method public boolean component15();
+    method public long component16();
+    method public boolean component17();
+    method public float component18();
+    method public int component2();
+    method public float component3();
+    method public float component4();
+    method public float component5();
+    method public float component6();
+    method public int component7();
+    method public int component8();
+    method public int component9();
+    method public com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings copy(boolean enabled, int position, float marginLeft, float marginTop, float marginRight, float marginBottom, int textColor, int primaryColor, int secondaryColor, float borderWidth, float height, float textBarMargin, float textBorderWidth, float textSize, boolean isMetricUnits, long refreshInterval, boolean showTextBorder, float ratio);
+    method public float getBorderWidth();
+    method public boolean getEnabled();
+    method public float getHeight();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public int getPrimaryColor();
+    method public float getRatio();
+    method public long getRefreshInterval();
+    method public int getSecondaryColor();
+    method public boolean getShowTextBorder();
+    method public float getTextBarMargin();
+    method public float getTextBorderWidth();
+    method public int getTextColor();
+    method public float getTextSize();
+    method public boolean isMetricUnits();
+    method public void setBorderWidth(float p);
+    method public void setEnabled(boolean p);
+    method public void setHeight(float p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setMetricUnits(boolean p);
+    method public void setPosition(int p);
+    method public void setPrimaryColor(int p);
+    method public void setRatio(float p);
+    method public void setRefreshInterval(long p);
+    method public void setSecondaryColor(int p);
+    method public void setShowTextBorder(boolean p);
+    method public void setTextBarMargin(float p);
+    method public void setTextBorderWidth(float p);
+    method public void setTextColor(int p);
+    method public void setTextSize(float p);
+    property public final float borderWidth;
+    property public final boolean enabled;
+    property public final float height;
+    property public final boolean isMetricUnits;
+    property public final float marginBottom;
+    property public final float marginLeft;
+    property public final float marginRight;
+    property public final float marginTop;
+    property public final int position;
+    property public final int primaryColor;
+    property public final float ratio;
+    property public final long refreshInterval;
+    property public final int secondaryColor;
+    property public final boolean showTextBorder;
+    property public final float textBarMargin;
+    property public final float textBorderWidth;
+    property public final int textColor;
+    property public final float textSize;
+  }
+
+  public abstract class ScaleBarSettingsBase implements com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettingsInterface {
+    ctor public ScaleBarSettingsBase();
+    method protected abstract void applySettings();
+    method public float getBorderWidth();
+    method public boolean getEnabled();
+    method public float getHeight();
+    method protected abstract com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings getInternalSettings();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public int getPrimaryColor();
+    method public float getRatio();
+    method public long getRefreshInterval();
+    method public int getSecondaryColor();
+    method public com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings getSettings();
+    method public boolean getShowTextBorder();
+    method public float getTextBarMargin();
+    method public float getTextBorderWidth();
+    method public int getTextColor();
+    method public float getTextSize();
+    method public boolean isMetricUnits();
+    method public void setBorderWidth(float value);
+    method public void setEnabled(boolean value);
+    method public void setHeight(float value);
+    method protected abstract void setInternalSettings(com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings p);
+    method public void setMarginBottom(float value);
+    method public void setMarginLeft(float value);
+    method public void setMarginRight(float value);
+    method public void setMarginTop(float value);
+    method public void setMetricUnits(boolean value);
+    method public void setPosition(int value);
+    method public void setPrimaryColor(int value);
+    method public void setRatio(float value);
+    method public void setRefreshInterval(long value);
+    method public void setSecondaryColor(int value);
+    method public void setShowTextBorder(boolean value);
+    method public void setTextBarMargin(float value);
+    method public void setTextBorderWidth(float value);
+    method public void setTextColor(int value);
+    method public void setTextSize(float value);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings,kotlin.Unit> block);
+    property public float borderWidth;
+    property public boolean enabled;
+    property public float height;
+    property protected abstract com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings internalSettings;
+    property public boolean isMetricUnits;
+    property public float marginBottom;
+    property public float marginLeft;
+    property public float marginRight;
+    property public float marginTop;
+    property public int position;
+    property public int primaryColor;
+    property public float ratio;
+    property public long refreshInterval;
+    property public int secondaryColor;
+    property public boolean showTextBorder;
+    property public float textBarMargin;
+    property public float textBorderWidth;
+    property public int textColor;
+    property public float textSize;
+  }
+
+  public interface ScaleBarSettingsInterface {
+    method public float getBorderWidth();
+    method public boolean getEnabled();
+    method public float getHeight();
+    method public float getMarginBottom();
+    method public float getMarginLeft();
+    method public float getMarginRight();
+    method public float getMarginTop();
+    method public int getPosition();
+    method public int getPrimaryColor();
+    method public float getRatio();
+    method public long getRefreshInterval();
+    method public int getSecondaryColor();
+    method public com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings getSettings();
+    method public boolean getShowTextBorder();
+    method public float getTextBarMargin();
+    method public float getTextBorderWidth();
+    method public int getTextColor();
+    method public float getTextSize();
+    method public boolean isMetricUnits();
+    method public void setBorderWidth(float p);
+    method public void setEnabled(boolean p);
+    method public void setHeight(float p);
+    method public void setMarginBottom(float p);
+    method public void setMarginLeft(float p);
+    method public void setMarginRight(float p);
+    method public void setMarginTop(float p);
+    method public void setMetricUnits(boolean p);
+    method public void setPosition(int p);
+    method public void setPrimaryColor(int p);
+    method public void setRatio(float p);
+    method public void setRefreshInterval(long p);
+    method public void setSecondaryColor(int p);
+    method public void setShowTextBorder(boolean p);
+    method public void setTextBarMargin(float p);
+    method public void setTextBorderWidth(float p);
+    method public void setTextColor(int p);
+    method public void setTextSize(float p);
+    method public void updateSettings(kotlin.jvm.functions.Function1<? super com.mapbox.maps.plugin.scalebar.generated.ScaleBarSettings,kotlin.Unit> block);
+    property public abstract float borderWidth;
+    property public abstract boolean enabled;
+    property public abstract float height;
+    property public abstract boolean isMetricUnits;
+    property public abstract float marginBottom;
+    property public abstract float marginLeft;
+    property public abstract float marginRight;
+    property public abstract float marginTop;
+    property public abstract int position;
+    property public abstract int primaryColor;
+    property public abstract float ratio;
+    property public abstract long refreshInterval;
+    property public abstract int secondaryColor;
+    property public abstract boolean showTextBorder;
+    property public abstract float textBarMargin;
+    property public abstract float textBorderWidth;
+    property public abstract int textColor;
+    property public abstract float textSize;
+  }
+
+}
+
