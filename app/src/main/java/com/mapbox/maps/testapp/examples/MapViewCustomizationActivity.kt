@@ -25,7 +25,10 @@ class MapViewCustomizationActivity : AppCompatActivity() {
   }
 
   private fun configureMapViewFromCode() {
-    val mapboxMapOptions = MapboxMapOptions(this).apply {
+    val mapboxMapOptions = MapboxMapOptions(
+      this,
+      credentialsManager = CredentialsManager(getString(R.string.mapbox_access_token))
+    ).apply {
       // set initial camera position
       cameraOptions = CameraOptions.Builder()
         .center(Point.fromLngLat(-122.4194, 37.7749))
@@ -43,10 +46,10 @@ class MapViewCustomizationActivity : AppCompatActivity() {
         )
         .build()
       // set token and cache size for this particular map view
-      resourceOptions = ResourceOptions.Builder()
-        .accessToken(getString(R.string.mapbox_access_token))
-        .cacheSize(75_000L)
-        .build()
+//      resourceOptions = ResourceOptions.Builder()
+//        .accessToken(getString(R.string.mapbox_access_token))
+//        .cacheSize(75_000L)
+//        .build()
     }
     // create view programmatically and add to root layout
     customMapView = MapView(this, mapboxMapOptions)
@@ -62,7 +65,7 @@ class MapViewCustomizationActivity : AppCompatActivity() {
 
   private fun configureMapViewFromXml() {
     // let's set `custom` token to MapView from code (however it will be same token from resources so that map will work)
-    MapboxOptions.setDefaultResourceOptions(this, getString(R.string.mapbox_access_token))
+//    MapboxOptions.setDefaultResourceOptions(this, getString(R.string.mapbox_access_token))
     // all options provided in xml file - so we just load style
     mapView.getMapboxMap().loadStyleUri(Style.DARK)
   }

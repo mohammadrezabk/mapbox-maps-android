@@ -56,18 +56,18 @@ class LegacyOfflineActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_offline)
-    offlineManager = OfflineRegionManager(MapboxOptions.getDefaultResourceOptions((this)))
-    offlineManager.createOfflineRegion(
-      OfflineRegionGeometryDefinition.Builder()
-        .geometry(point)
-        .pixelRatio(2f)
-        .minZoom(zoom - 2)
-        .maxZoom(zoom + 2)
-        .styleURL(styleUrl)
-        .glyphsRasterizationMode(GlyphsRasterizationMode.NO_GLYPHS_RASTERIZED_LOCALLY)
-        .build(),
-      callback
-    )
+//    offlineManager = OfflineRegionManager(MapboxOptions.getDefaultResourceOptions((this)))
+//    offlineManager.createOfflineRegion(
+//      OfflineRegionGeometryDefinition.Builder()
+//        .geometry(point)
+//        .pixelRatio(2f)
+//        .minZoom(zoom - 2)
+//        .maxZoom(zoom + 2)
+//        .styleURL(styleUrl)
+//        .glyphsRasterizationMode(GlyphsRasterizationMode.NO_GLYPHS_RASTERIZED_LOCALLY)
+//        .build(),
+//      callback
+//    )
   }
 
   private fun downloadComplete() {
