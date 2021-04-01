@@ -1,7 +1,6 @@
 package com.mapbox.maps.plugin.animation
 
 import android.os.Build
-import com.mapbox.common.ShadowLogger
 import com.mapbox.maps.plugin.animation.CameraTransform.deg2rad
 import org.junit.Assert
 import org.junit.Before

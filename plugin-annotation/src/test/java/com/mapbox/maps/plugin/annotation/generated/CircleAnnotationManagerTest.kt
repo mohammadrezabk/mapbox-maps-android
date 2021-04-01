@@ -4,7 +4,6 @@ package com.mapbox.maps.plugin.annotation.generated
 
 import android.graphics.Color
 import android.graphics.PointF
-import android.os.Build
 import android.view.View
 import com.mapbox.android.gestures.MoveDistancesObject
 import com.mapbox.android.gestures.MoveGestureDetector
@@ -15,17 +14,12 @@ import com.mapbox.common.ValueConverter
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
-import com.mapbox.maps.LayerPosition
 import com.mapbox.maps.QueryFeaturesCallback
 import com.mapbox.maps.ScreenCoordinate
 import com.mapbox.maps.StyleManagerInterface
 import com.mapbox.maps.extension.style.expressions.generated.Expression
-import com.mapbox.maps.extension.style.layers.addLayer
-import com.mapbox.maps.extension.style.layers.addLayerBelow
 import com.mapbox.maps.extension.style.layers.generated.CircleLayer
-import com.mapbox.maps.extension.style.sources.addSource
 import com.mapbox.maps.extension.style.sources.generated.GeoJsonSource
-import com.mapbox.maps.extension.style.sources.getSource
 import com.mapbox.maps.plugin.annotation.*
 import com.mapbox.maps.plugin.delegates.MapDelegateProvider
 import com.mapbox.maps.plugin.delegates.MapFeatureQueryDelegate
@@ -56,7 +50,6 @@ class CircleAnnotationManagerTest {
   private val source: GeoJsonSource = mockk()
   private val mapView: View = mockk()
   private lateinit var manager: CircleAnnotationManager
-
   @Before
   fun setUp() {
     mockkStatic("com.mapbox.maps.extension.style.layers.LayerKt")
