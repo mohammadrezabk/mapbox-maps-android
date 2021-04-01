@@ -87,7 +87,7 @@ object Versions {
   const val materialDesign = "1.3.0"
   const val kotlinCoroutines = "1.4.3"
   const val junit = "4.13.2"
-  const val mockk = "1.11.0"
+  const val mockk = "1.10.6"
   const val robolectric = "4.5.1"
   const val robolectricEgl = "gl1.1-android-2.1_r1"
 }

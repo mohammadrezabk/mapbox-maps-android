@@ -4,6 +4,7 @@ package com.mapbox.maps.plugin.annotation.generated
 
 import android.graphics.Color
 import android.graphics.PointF
+import android.os.Build
 import android.view.View
 import com.mapbox.android.gestures.MoveDistancesObject
 import com.mapbox.android.gestures.MoveGestureDetector
@@ -15,6 +16,7 @@ import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
 import com.mapbox.geojson.Polygon
+import com.mapbox.maps.LayerPosition
 import com.mapbox.maps.QueryFeaturesCallback
 import com.mapbox.maps.ScreenCoordinate
 import com.mapbox.maps.StyleManagerInterface
@@ -44,7 +46,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(shadows = [ShadowValueConverter::class, ShadowLogger::class])
+@Config(sdk = [Build.VERSION_CODES.O], shadows = [ShadowValueConverter::class, ShadowLogger::class])
 class PolygonAnnotationManagerTest {
   private val delegateProvider: MapDelegateProvider = mockk()
   private val style: StyleManagerInterface = mockk()
@@ -70,10 +72,14 @@ class PolygonAnnotationManagerTest {
     val styleStateDelegate = mockk<MapStyleStateDelegate>()
     every { delegateProvider.styleStateDelegate } returns styleStateDelegate
     every { styleStateDelegate.isFullyLoaded() } returns true
-    every { style.addSource(any()) } just Runs
-    every { style.addLayer(any()) } just Runs
-    every { style.addLayerBelow(any(), any()) } just Runs
-    every { style.getSource(any()) } returns null
+    val returnExpected = mockk<Expected<Void, String>>()
+    every { returnExpected.error } returns null
+    every { style.addStyleSource(any(), any())} returns returnExpected
+    every {style.addStyleLayer(any(), any())} returns returnExpected
+    val valueExpected = mockk<Expected<Value, String>>()
+    every { valueExpected.error } returns null
+    every { style.getStyleSourceProperties(any()) } returns valueExpected
+    every { style.setStyleLayerProperty(any(), any(), any())} returns returnExpected
     every { style.styleSourceExists(any()) } returns false
     every { style.styleLayerExists(any()) } returns false
     every { style.getStyleImage(any()) } returns null
@@ -109,9 +115,9 @@ class PolygonAnnotationManagerTest {
     verify { gesturesPlugin.addOnMapLongClickListener(any()) }
     verify { gesturesPlugin.addOnMoveListener(any()) }
     assertEquals(PolygonAnnotation.ID_KEY, manager.getAnnotationIdKey())
-    verify { style.addLayer(any()) }
+    verify { style.addStyleLayer(any(), any()) }
     manager = PolygonAnnotationManager(mapView, delegateProvider, AnnotationConfig("test_layer"))
-    verify { style.addLayerBelow(any(), "test_layer") }
+    verify { style.addStyleLayer(any(), LayerPosition(null, "test_layer", null)) }
 
     manager.addClickListener(mockk())
     manager.addDragListener(mockk())
