@@ -3,6 +3,7 @@ package com.mapbox.maps
 import android.content.Context
 import android.text.TextUtils
 import android.util.AttributeSet
+import com.mapbox.maps.plugin.*
 
 /**
  * Defines configuration [MapboxMapOptions] for a [MapboxMap]. These options can be used when adding a
@@ -57,6 +58,22 @@ data class MapboxMapOptions constructor(
    * Flag indicating to use a TextureView as render surface for the MapView
    */
   var textureView: Boolean
+
+  /**
+   * Default plugins to initialize the map with
+   */
+  var plugins = arrayOf(
+    PLUGIN_CAMERA_ANIMATIONS_CLASS_NAME,
+    PLUGIN_COMPASS_CLASS_NAME,
+    PLUGIN_LOGO_CLASS_NAME,
+    PLUGIN_GESTURE_CLASS_NAME,
+    PLUGIN_ATTRIBUTION_CLASS_NAME,
+    PLUGIN_LOCATION_CLASS_NAME,
+    PLUGIN_LOCATION_COMPONENT_CLASS_NAME,
+    PLUGIN_SCALE_BAR_CLASS_NAME,
+    PLUGIN_MAPOVERLAY_CLASS_NAME,
+    PLUGIN_ANNOTATION_CLASS_NAME
+  )
 
   init {
     val typedArray = context.obtainStyledAttributes(attrs, R.styleable.mapbox_MapView, 0, 0)

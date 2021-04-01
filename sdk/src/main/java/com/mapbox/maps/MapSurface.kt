@@ -44,10 +44,8 @@ class MapSurface : MapPluginProviderDelegate, MapControllable {
       mapboxMapOptions
     )
     mapController.initializePlugins(
+      mapboxMapOptions,
       null,
-      mapboxMapOptions.context,
-      mapboxMapOptions.attrs,
-      mapboxMapOptions.pixelRatio
     )
   }
 

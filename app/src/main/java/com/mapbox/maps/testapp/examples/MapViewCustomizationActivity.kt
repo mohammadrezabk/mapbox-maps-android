@@ -5,6 +5,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.mapbox.geojson.Point
 import com.mapbox.maps.*
+import com.mapbox.maps.plugin.*
 import com.mapbox.maps.testapp.R
 import kotlinx.android.synthetic.main.activity_map_view_customization.*
 
@@ -30,6 +31,7 @@ class MapViewCustomizationActivity : AppCompatActivity() {
       cameraOptions = CameraOptions.Builder()
         .center(Point.fromLngLat(-122.4194, 37.7749))
         .zoom(9.0)
+        .bearing(45.0)
         .build()
       // use texture view renderer
       textureView = true
@@ -47,6 +49,12 @@ class MapViewCustomizationActivity : AppCompatActivity() {
         .accessToken(getString(R.string.mapbox_access_token))
         .cacheSize(75_000L)
         .build()
+
+      // plugins configuration
+      plugins = arrayOf(
+        PLUGIN_LOGO_CLASS_NAME,
+        PLUGIN_ATTRIBUTION_CLASS_NAME,
+      )
     }
     // create view programmatically and add to root layout
     customMapView = MapView(this, mapboxMapOptions)

@@ -33,7 +33,7 @@ import java.lang.ref.WeakReference
  * <strong>Warning:</strong> Please note that you are responsible for getting permission to use the map data,
  * and for ensuring your use adheres to the relevant terms of use.
  */
-open class MapView : FrameLayout, MapPluginProviderDelegate, MapControllable {
+class MapView : FrameLayout, MapPluginProviderDelegate, MapControllable {
   private var mapController: MapController
 
   /**
@@ -115,8 +115,7 @@ open class MapView : FrameLayout, MapPluginProviderDelegate, MapControllable {
       options
     )
     addView(view, 0)
-
-    mapController.initializePlugins(this, context, attrs, options.pixelRatio)
+    mapController.initializePlugins(options, this)
   }
 
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
